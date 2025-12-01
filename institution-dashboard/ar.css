@@ -1,0 +1,188 @@
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #f6f5fa;
+    margin: 0;
+    padding: 40px;
+    color: #333;
+  }
+
+  h1 {
+    font-size: 26px;
+    color: #4b0082;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #555;
+    margin-bottom: 25px;
+  }
+
+  /* Internship Stats */
+  .stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 30px;
+  }
+
+  .stat-card {
+    background: linear-gradient(145deg, #ffffff, #f0e6ff);
+    border-radius: 20px;
+    flex: 1;
+    min-width: 230px;
+    text-align: center;
+    padding: 30px 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  }
+
+  .stat-card::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    background: rgba(106,13,173,0.1);
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  .stat-icon {
+    font-size: 28px;
+    color: #6a0dad;
+    z-index: 1;
+    position: relative;
+  }
+
+  .stat-value {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #4b0082;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-label {
+    font-size: 15px;
+    color: #777;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Department Section */
+  .dept-section {
+    background: #fff;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  }
+
+  .dept-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .dept-header h2 {
+    font-size: 20px;
+    color: #4b0082;
+  }
+
+  .dept-list {
+    margin-top: 25px;
+  }
+
+  .dept-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f9f4ff;
+    border-radius: 18px;
+    padding: 20px 25px;
+    margin-bottom: 18px;
+    transition: 0.3s;
+    height: 120px;
+  }
+
+  .dept-card:hover {
+    background: #efe4ff;
+    transform: scale(1.02);
+  }
+
+  .dept-info {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .company-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: contain;
+    background: #fff;
+    padding: 5px;
+    border: 1px solid #ddd;
+  }
+
+  .dept-text h4 {
+    margin: 0;
+    color: #4b0082;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .dept-text p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.4;
+  }
+
+  .dept-data {
+    text-align: right;
+  }
+
+  .dept-data h3 {
+    margin: 0;
+    color: #6a0dad;
+    font-size: 22px;
+  }
+
+  .dept-data small {
+    color: #777;
+  }
+
+  /* Chart Section */
+  .chart-section {
+    margin-top: 40px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    padding: 25px;
+  }
+
+  .chart-section h2 {
+    font-size: 20px;
+    color: #4b0082;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  canvas {
+    max-width: 100%;
+    height: 380px !important;
+  }
+

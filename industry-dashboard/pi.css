@@ -1,0 +1,219 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f4f7f9;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-section {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+h1 { color: #333; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; font-size: 28px; }
+h2 { color: #4e54c8; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+
+/* Form card */
+.internship-form {
+  background: linear-gradient(145deg, #ffffff, #e9edf7);
+  padding: 30px 35px;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+  margin-bottom: 50px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 100%;
+}
+.internship-form:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+/* Decorative arcs */
+.internship-form::before, .internship-form::after {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background: #4e54c8;
+  border-radius: 50%;
+  opacity: 0.1;
+  transition: transform 0.5s;
+}
+.internship-form::before { top: -60px; right: -60px; }
+.internship-form::after { bottom: -60px; left: -60px; }
+.internship-form:hover::before { transform: scale(1.2) rotate(10deg); }
+.internship-form:hover::after { transform: scale(1.2) rotate(-10deg); }
+
+/* Form input icons */
+.input-icon {
+  position: relative;
+}
+.input-icon i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #4e54c8;
+}
+.input-icon input, .input-icon textarea {
+  width: 100%;
+  padding: 14px 18px 14px 40px; /* space for icon */
+  margin-bottom: 18px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+.input-icon input:focus, .input-icon textarea:focus {
+  border-color: #4e54c8;
+  box-shadow: 0 0 8px rgba(78, 84, 200, 0.3);
+}
+
+.internship-form button {
+  background: #4e54c8;
+  color: #fff;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.internship-form button:hover {
+  background: #3b40a4;
+  transform: translateY(-2px);
+}
+
+/* Search bar */
+.search-filter {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.search-filter input, .search-filter select {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  width: 32%;
+}
+
+/* Cards heading */
+.cards-heading {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Internship cards vertical layout */
+.internship-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Card design */
+.internship-card {
+  background: linear-gradient(145deg, #ffffff, #e9edf7);
+  padding: 25px 25px 25px 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.internship-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+
+/* Decorative arcs for cards */
+.internship-card::before, .internship-card::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: #4e54c8;
+  border-radius: 50%;
+  opacity: 0.1;
+}
+.internship-card::before { top: -50px; right: -50px; }
+.internship-card::after { bottom: -50px; left: -50px; }
+
+/* Card content */
+.internship-card h3 { margin-bottom: 8px; color: #4e54c8; display: flex; align-items: center; gap: 8px; }
+.internship-card p { margin-bottom: 12px; color: #555; font-size: 14px; }
+
+/* Merged skills button */
+.skills-button {
+  display: inline-block;
+  background: #8f94fb;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 25px;
+  font-size: 13px;
+  margin-bottom: 10px;
+  cursor: default;
+}
+
+/* Card buttons */
+.card-buttons {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  position: relative;
+}
+
+/* Active status button above close */
+.card-buttons .status-btn {
+  background: #d1ffd4;
+  color: #2e7d32;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-right: auto;
+}
+
+/* Edit / View buttons with icons */
+.card-buttons button:not(.close-btn) {
+  background: #4e54c8;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s;
+}
+.card-buttons button:not(.close-btn):hover {
+  background: #3b40a4;
+}
+
+/* Close button on right with icon */
+.card-buttons .close-btn {
+  background: #ddd;
+  color: #333;
+  margin-left: auto;
+  padding: 8px 15px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.card-buttons .close-btn:hover { background: #ccc; }
+
+@media (max-width: 768px) {
+  .search-filter input, .search-filter select { width: 100%; }
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Credit Management - Dikshara</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="cm.css"/>
+<head>
+<body>
+
+<header><i class="fas fa-credit-card"></i> Credit Management - Dikshara Mentor Dashboard</header>
+
+<!-- Overview Cards -->
+<div class="stats">
+  <div class="card"><h2><i class="fas fa-layer-group"></i> 300</h2><p>Total Credits Assigned</p></div>
+  <div class="card"><h2><i class="fas fa-check-circle"></i> 240</h2><p>Credits Earned</p></div>
+  <div class="card"><h2><i class="fas fa-hourglass-half"></i> 60</h2><p>Pending Credits</p></div>
+  <div class="card"><h2><i class="fas fa-user-graduate"></i> 15</h2><p>Avg Credits/Student</p></div>
+</div>
+
+<!-- Filters -->
+<div class="filters">
+  <select id="deptFilter"><option value="all"><i class="fas fa-building"></i> All Departments</option><option value="CSE">CSE</option><option value="ECE">ECE</option><option value="Mechanical">Mechanical</option></select>
+  <select id="statusFilter"><option value="all"><i class="fas fa-tasks"></i> All Status</option><option value="Pending">Pending</option><option value="Completed">Completed</option></select>
+  <input type="text" id="searchInput" placeholder="🔍 Search Student...">
+</div>
+
+<!-- Student Credit Table -->
+<table id="creditTable">
+  <thead>
+    <tr>
+      <th>Student Name</th>
+      <th>Department</th>
+      <th>Course/Internship</th>
+      <th>Credits Assigned</th>
+      <th>Credits Earned</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<!-- Charts -->
+
+
+<!-- Leaderboard -->
+<div class="leaderboard">
+  <h3><i class="fas fa-trophy"></i> Top Performing Students</h3>
+  <div id="leaderboardList"></div>
+</div>
+
+<script>
+const students = [
+  { name: 'John Doe', dept: 'CSE', course: 'Web Development', assigned: 10, earned: 8, status: 'Pending' },
+  { name: 'Jane Smith', dept: 'ECE', course: 'AI Workshop', assigned: 12, earned: 12, status: 'Completed' },
+  { name: 'Armin Arlet', dept: 'Mechanical', course: 'Robotics', assigned: 15, earned: 15, status: 'Completed' },
+  { name: 'Historia Reiss', dept: 'CSE', course: 'Data Analytics', assigned: 8, earned: 6, status: 'Pending' },
+  { name: 'Jean Kirstein', dept: 'ECE', course: 'UI/UX Design', assigned: 10, earned: 10, status: 'Completed' }
+];
+
+// Populate table
+function displayTable() {
+  const tbody = document.querySelector('#creditTable tbody');
+  tbody.innerHTML = '';
+  const deptFilter = document.getElementById('deptFilter').value;
+  const statusFilter = document.getElementById('statusFilter').value;
+  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+  students.filter(s => 
+    (deptFilter === 'all' || s.dept === deptFilter) &&
+    (statusFilter === 'all' || s.status === statusFilter) &&
+    s.name.toLowerCase().includes(searchTerm)
+  ).forEach(s => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><i class="fas fa-user"></i> ${s.name}</td>
+      <td>${s.dept}</td>
+      <td>${s.course}</td>
+      <td>${s.assigned}</td>
+      <td>${s.earned}</td>
+      <td><span class="status ${s.status}"><i class="fas ${s.status === 'Completed' ? 'fa-check' : 'fa-hourglass-half'}"></i> ${s.status}</span></td>
+      <td>
+        <button class="btn approve"><i class="fas fa-check"></i> Approve</button>
+        <button class="btn reject"><i class="fas fa-times"></i> Reject</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// Filters & Search
+document.getElementById('deptFilter').addEventListener('change', displayTable);
+document.getElementById('statusFilter').addEventListener('change', displayTable);
+document.getElementById('searchInput').addEventListener('input', displayTable);
+
+displayTable();
+
+// Charts
+
+
+// Leaderboard
+const leaderboard = document.getElementById('leaderboardList');
+students.sort((a,b) => b.earned - a.earned).forEach(s => {
+  const div = document.createElement('div');
+  div.className = 'leader-card';
+  div.innerHTML = `<span><i class="fas fa-user-graduate"></i> ${s.name}</span><span>${s.earned} Credits</span>`;
+  leaderboard.appendChild(div);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+
+    /* ---------- Base Styling ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      display: flex;
+      background: linear-gradient(135deg, #2a2f4f, #917fb3);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ---------- Sidebar ---------- */
+    .sidebar {
+      width: 250px;
+      background: rgba(47, 49, 87, 0.95);
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      padding: 20px 0;
+      transition: width 0.4s ease;
+      overflow: hidden;
+    }
+
+    .sidebar.collapsed {
+      width: 85px;
+    }
+
+    .sidebar .logo-section {
+      text-align: center;
+      padding-bottom: 30px;
+      transition: all 0.3s;
+    }
+
+    .sidebar .logo-section img {
+      width: 200px;
+      height: 120px;
+      margin-bottom: 10px;
+    }
+
+    .sidebar .logo-section h2 {
+      font-size: 18px;
+      letter-spacing: 1px;
+      color: #fff;
+      opacity: 1;
+      transition: opacity 0.3s;
+    }
+
+    .sidebar.collapsed .logo-section h2 {
+      opacity: 0;
+    }
+
+    /* ---------- Nav Menu ---------- */
+    .nav-links {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    .nav-links li {
+      position: relative;
+      padding: 14px 25px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links li:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: scale(1.03);
+    }
+
+    .nav-links li.active {
+      background: linear-gradient(90deg, #8e7ab5, #b784b7);
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      animation: glow 0.8s ease-in-out forwards;
+    }
+
+    @keyframes glow {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+    .nav-links i {
+      font-size: 20px;
+      color: #fff;
+      min-width: 25px;
+      text-align: center;
+    }
+
+    .nav-links span {
+      font-size: 16px;
+      white-space: nowrap;
+      transition: opacity 0.3s ease;
+    }
+
+    .sidebar.collapsed .nav-links span {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* ---------- Toggle Button ---------- */
+    .toggle-btn {
+      position: absolute;
+      top: 20px;
+      right: -15px;
+      background: #917fb3;
+      border: none;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 22px;
+      padding: 8px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .toggle-btn:hover {
+      transform: rotate(90deg);
+      background: #8e7ab5;
+    }
+
+    /* ---------- Main Content ---------- */
+    .main-content {
+      margin-left: 250px;
+      padding: 30px;
+      flex-grow: 1;
+      transition: margin-left 0.4s ease;
+    }
+
+    .sidebar.collapsed ~ .main-content {
+      margin-left: 85px;
+    }
+
+    .main-content h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deeksha - Skill Gap Analytics Dashboard</title>
+
+  <!-- Fonts and Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="sg.css"/>
+
+  
+</head>
+<body>
+
+  <header>
+    <i data-lucide="bar-chart-3" class="icon"></i>
+    <span>Deeksha - Skill Gap Analytics </span>
+  </header>
+
+  <div class="dashboard">
+
+    <!-- Overview -->
+    <div class="card" style="grid-column: span 2;">
+      <h2><i data-lucide="activity" class="icon"></i> Overview / Summary</h2>
+      <div class="overview">
+        <div class="stat">
+          <h3>120</h3>
+          <p>Total Students Analyzed</p>
+        </div>
+        <div class="stat">
+          <h3>45</h3>
+          <p>Students with Skill Gaps</p>
+        </div>
+        <div class="stat">
+          <h3>Programming</h3>
+          <p>Most Common Gap</p>
+        </div>
+        <div class="stat">
+          <h3>68%</h3>
+          <p>Students Showing Progress</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bar Chart -->
+    <div class="card">
+      <h2><i data-lucide="bar-chart" class="icon"></i> Skill Gap Visualization</h2>
+      <canvas id="barChart" class="chart-container"></canvas>
+    </div>
+
+    <!-- Radar Chart -->
+    <div class="card">
+      <h2><i data-lucide="radar" class="icon"></i> Skill Comparison</h2>
+      <canvas id="radarChart" class="chart-container"></canvas>
+    </div>
+
+    <!-- Student Details -->
+    <div class="card" style="grid-column: span 2;">
+      <h2><i data-lucide="users" class="icon"></i> Student-Level Details</h2>
+      <div class="filters">
+        <select>
+          <option>Filter by Department</option>
+          <option>CSE</option>
+          <option>ECE</option>
+          <option>EEE</option>
+        </select>
+        <select>
+          <option>Sort by Progress</option>
+          <option>Highest to Lowest</option>
+          <option>Lowest to Highest</option>
+        </select>
+        <button><i data-lucide="filter" class="icon"></i> Apply Filters</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>Skill Rating</th>
+            <th>Identified Gaps</th>
+            <th>Recommended Action</th>
+            <th>Progress</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ravi Kumar</td>
+            <td>7.5 / 10</td>
+            <td>Data Analysis</td>
+            <td>Take "Data Analysis Bootcamp"</td>
+            <td>▲ 65%</td>
+          </tr>
+          <tr>
+            <td>Neha Sharma</td>
+            <td>6.8 / 10</td>
+            <td>Programming</td>
+            <td>Practice 3 coding exercises/week</td>
+            <td>▲ 72%</td>
+          </tr>
+          <tr>
+            <td>Rahul Mehta</td>
+            <td>8.2 / 10</td>
+            <td>Communication</td>
+            <td>Attend "Soft Skills Workshop"</td>
+            <td>▲ 80%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="content" style="
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;   /* Horizontal scroll */
+  overflow-y: auto;   /* Vertical scroll */
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #fff;  /* Clean background for sg.html */
+">
+  <!-- Default dashboard content can go here -->
+</div>
+
+
+    <!-- Learning Resources -->
+    <div class="card">
+      <h2><i data-lucide="book-open" class="icon"></i> Recommended Learning Resources</h2>
+      <ul>
+        <li><strong>Data Structures & Algorithms</strong> - Coursera (8 weeks)</li>
+        <li><strong>Advanced Communication</strong> - Workshop (2 days)</li>
+        <li><strong>Machine Learning Fundamentals</strong> - Udemy (10 weeks)</li>
+        <li><strong>Weekly Plan:</strong> Practice 3 coding exercises per week</li>
+      </ul>
+    </div>
+
+    <!-- Analytics -->
+    <div class="card">
+      <h2><i data-lucide="trending-up" class="icon"></i> Analytics & Insights</h2>
+      <p><strong>Top Gaps:</strong> Programming, Data Analysis, Communication</p>
+      <p><strong>Improvement Rate:</strong> 68% of students have improved after training.</p>
+      <p><strong>Industry Demand:</strong> AI/ML, Data Science, and Full-Stack skills rising 35% YoY.</p>
+      <p><strong>Alerts:</strong> 5 students are falling behind — mentors will be notified.</p>
+    </div>
+
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    // Bar Chart - Skill Gaps
+    const barCtx = document.getElementById('barChart');
+    new Chart(barCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Programming', 'Data Analysis', 'Communication', 'AI/ML', 'Soft Skills'],
+        datasets: [{
+          label: 'Students with Gaps',
+          data: [25, 15, 10, 8, 5],
+          backgroundColor: ['#4e54c8', '#8f94fb', '#f7b42c', '#42e695', '#ff5f6d']
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+
+    // Radar Chart - Skill Comparison
+    const radarCtx = document.getElementById('radarChart');
+    new Chart(radarCtx, {
+      type: 'radar',
+      data: {
+        labels: ['Programming', 'Data Analysis', 'Communication', 'AI/ML', 'Soft Skills'],
+        datasets: [
+          {
+            label: 'Student A',
+            data: [7, 6, 8, 5, 7],
+            fill: true,
+            backgroundColor: 'rgba(78,84,200,0.2)',
+            borderColor: '#4e54c8'
+          },
+          {
+            label: 'Student B',
+            data: [6, 8, 7, 6, 6],
+            fill: true,
+            backgroundColor: 'rgba(143,148,251,0.2)',
+            borderColor: '#8f94fb'
+          }
+        ]
+      },
+      options: {
+        scales: {
+          r: { beginAtZero: true, max: 10 }
+        }
+      }
+    });
+    async function loadPage(page) {
+  try {
+    const response = await fetch(page);
+    const html = await response.text();
+    content.innerHTML = html;
+
+    // Execute <script> tags inside the loaded HTML
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+    const scripts = doc.querySelectorAll("script");
+
+    scripts.forEach(script => {
+      const newScript = document.createElement("script");
+      if(script.src){
+        newScript.src = script.src;
+      } else {
+        newScript.textContent = script.textContent;
+      }
+      content.appendChild(newScript);
+    });
+
+    // Run Lucide icons (needed for sg.html)
+    if(window.lucide) lucide.createIcons();
+
+  } catch(err) {
+    content.innerHTML = `<p style="color:red;">Error loading ${page}</p>`;
+    console.error(err);
+  }
+}
+
+// Menu click handler
+menuLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector('.menu a.active')?.classList.remove('active');
+    link.classList.add('active');
+
+    const section = link.dataset.section;
+    content.style.opacity = '0';
+
+    setTimeout(() => {
+      if(section === 'student'){
+        loadPage('sm.html');
+      }
+      else if(section === 'feedback'){
+        loadPage('mf.html');
+      }
+      else if(section === 'report'){
+        loadPage('rg.html');
+      }
+      else if(section === 'skillgap'){       // ✅ Skill Gap Analytics button
+        loadPage('sg.html');
+      }
+      else{
+        content.innerHTML = '<p>Select a section to view content.</p>';
+      }
+      content.style.opacity = '1';
+    }, 300);
+  });
+});
+</script>
+
+
+</body>
+</html>

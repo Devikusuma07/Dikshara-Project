@@ -1,0 +1,209 @@
+
+
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f7fb;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(90deg, #4e54c8, #8f94fb);
+      color: white;
+      text-align: center;
+      padding: 25px 0;
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .dashboard {
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      padding: 20px 25px;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+    }
+
+    .card h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #4e54c8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Overview */
+    .overview {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .overview .stat {
+      flex: 1;
+      min-width: 180px;
+      background: linear-gradient(135deg, #8f94fb, #4e54c8);
+      color: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      font-weight: 500;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .stat h3 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .stat p {
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    .chart-container {
+      height: 300px;
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f0f2ff;
+      color: #333;
+      font-weight: 600;
+    }
+
+    /* Filters */
+    .filters {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    select, button {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-family: 'Poppins';
+      cursor: pointer;
+    }
+
+    button {
+      background: linear-gradient(90deg, #4e54c8, #8f94fb);
+      color: white;
+      border: none;
+      font-weight: 500;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #8f94fb, #4e54c8);
+    }
+
+    /* Recommendations */
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      padding: 10px 0;
+      a:focus,
+a:active,
+a:focus-visible,
+button:focus,
+button:active,
+button:focus-visible {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+    }
+  }
+
+
+
+/* ===== Remove dotted focus outlines globally ===== */
+a:focus,
+a:active,
+a:focus-visible,
+button:focus,
+button:active,
+button:focus-visible {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+    /* Icon Styling */
+    .icon {
+      width: 20px;
+      height: 20px;
+      color: #4e54c8;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+    }
+  
+
+    .dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+  min-width: 1200px;    /* Forces horizontal scroll on smaller screens */
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.chart-container {
+  width: 100%;
+  height: 300px;
+}
+
+.dashboard i,
+.dashboard .icon {
+  color: #4e54c8 !important;  /* Keep icon colors intact */
+}
+
+
+

@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blockchain Certificate Verification</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <link rel="stylesheet" href="bc.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <header>
+      <h1><i class="fas fa-shield-alt"></i> Blockchain Certificate Verification</h1>
+      <p>Ensure authenticity of issued certificates via blockchain</p>
+    </header>
+
+    <!-- Main Blockchain Card -->
+    <div class="main-card">
+      <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <h3>Blockchain-Verified Certificates</h3>
+      <p>All certificates are cryptographically signed and stored on blockchain for tamper-proof verification.</p>
+      <div class="stats-container">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-certificate"></i></div>
+          <h4>234</h4>
+          <p>Issued</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+          <h4>187</h4>
+          <p>Verified</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-hourglass-half"></i></div>
+          <h4>47</h4>
+          <p>Pending</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-link"></i></div>
+          <h4>1,234</h4>
+          <p>Blockchain Entries</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certificate Verification Input -->
+    <div class="verify-section">
+      <h2><i class="fas fa-search"></i> Verify Certificate</h2>
+      <div class="verify-input">
+        <input type="text" placeholder="Enter certificate ID or hash">
+        <button><i class="fas fa-check"></i> Verify on Blockchain</button>
+      </div>
+    </div>
+
+    <!-- Recent Verifications Table -->
+    <div class="recent-verifications">
+      <h2><i class="fas fa-history"></i> Recent Verifications</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Course</th>
+            <th>Wallet</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mikasa Ackerman</td>
+            <td>Frontend Development</td>
+            <td>0x7a8f...3c2d</td>
+            <td class="verified"><i class="fas fa-check-circle"></i> Verified</td>
+          </tr>
+          <tr>
+            <td>Armin Arlet</td>
+            <td>Data Analytics</td>
+            <td>0x9b2e...8f1a</td>
+            <td class="verified"><i class="fas fa-check-circle"></i> Verified</td>
+          </tr>
+          <tr>
+            <td>Historia Reiss</td>
+            <td>UI/UX Design</td>
+            <td>0x4d6c...5a9b</td>
+            <td class="pending"><i class="fas fa-hourglass-half"></i> Pending</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Visualization Section -->
+    <!-- Visualization Section -->
+<div class="chart-section">
+  <h2><i class="fas fa-chart-pie"></i> Certificate Stats Visualization</h2>
+  <div class="chart-container" style="width:500px; height:500px; margin:auto;">
+    <canvas id="certificateChart"></canvas>
+  </div>
+</div>
+
+
+    <!-- Additional Section: Top Courses -->
+    <div class="top-courses">
+      <h2><i class="fas fa-book-open"></i> Top Courses Completed</h2>
+      <div class="course-list">
+        <div class="course-card"><i class="fas fa-code"></i> Frontend Development</div>
+        <div class="course-card"><i class="fas fa-database"></i> Data Analytics</div>
+        <div class="course-card"><i class="fas fa-pencil-ruler"></i> UI/UX Design</div>
+        <div class="course-card"><i class="fas fa-robot"></i> Machine Learning</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const ctx = document.getElementById('certificateChart').getContext('2d');
+    const certificateChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Issued', 'Verified', 'Pending'],
+        datasets: [{
+          label: 'Certificates',
+          data: [234, 187, 47],
+          backgroundColor: ['#a29bfe', '#6c5ce7', '#d6a2e8'],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: 'bottom' } },
+        cutout: '60%'
+      }
+    });
+  </script>
+</body>
+</html>

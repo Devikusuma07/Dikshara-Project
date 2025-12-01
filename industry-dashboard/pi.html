@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post Internship Dashboard</title>
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="pi.css"/>
+</head>
+<body>
+
+<div class="dashboard-section">
+  <h1><i class='bx bx-briefcase'></i> Post Internship / Projects</h1>
+
+  <!-- Create New Internship Form with icons -->
+  <div class="internship-form">
+    <h2><i class='bx bx-plus-circle'></i> Create New Internship</h2>
+
+    <div class="input-icon">
+      <i class='bx bx-text'></i>
+      <input type="text" placeholder="Internship Title">
+    </div>
+
+    <div class="input-icon">
+      <i class='bx bx-time'></i>
+      <input type="text" placeholder="Duration (e.g., 3 months)">
+    </div>
+
+    <div class="input-icon">
+      <i class='bx bx-money'></i>
+      <input type="text" placeholder="Stipend (e.g., ₹15,000/month)">
+    </div>
+
+    <div class="input-icon">
+      <i class='bx bx-brain'></i>
+      <input type="text" placeholder="Required Skills (comma-separated)">
+    </div>
+
+    <div class="input-icon">
+      <i class='bx bx-detail'></i>
+      <textarea rows="4" placeholder="Description"></textarea>
+    </div>
+
+    <button><i class='bx bx-send'></i> Publish Internship</button>
+  </div>
+
+  <!-- Search & Filters -->
+  <div class="search-filter">
+    <input type="text" placeholder="Search by title or skill">
+    <select>
+      <option value="">Filter by duration</option>
+      <option value="3">3 months</option>
+      <option value="4">4 months</option>
+      <option value="6">6 months</option>
+    </select>
+    <select>
+      <option value="">Filter by stipend</option>
+      <option value="15000">₹15,000</option>
+      <option value="18000">₹18,000</option>
+      <option value="25000">₹25,000</option>
+    </select>
+  </div>
+
+  <!-- Heading above cards -->
+  <div class="cards-heading"><i class='bx bx-list-ul'></i> Your Active Listings</div>
+
+  <!-- Active Listings -->
+  <div class="internship-cards">
+    <div class="internship-card">
+      <h3><i class='bx bx-code'></i> Frontend Developer Intern</h3>
+      <p>Duration: 3 months • ₹15,000/month</p>
+      <div class="skills-button">HTML, CSS, JavaScript</div>
+      <div class="card-buttons">
+        <div class="status-btn">Active</div>
+        <button><i class='bx bx-edit'></i> Edit</button>
+        <button><i class='bx bx-show'></i> View Applications</button>
+        <button class="close-btn"><i class='bx bx-x'></i> Close</button>
+      </div>
+    </div>
+
+    <div class="internship-card">
+      <h3><i class='bx bx-bar-chart-alt-2'></i> Data Analytics Intern</h3>
+      <p>Duration: 4 months • ₹18,000/month</p>
+      <div class="skills-button">Python, SQL, Tableau</div>
+      <div class="card-buttons">
+        <div class="status-btn">Active</div>
+        <button><i class='bx bx-edit'></i> Edit</button>
+        <button><i class='bx bx-show'></i> View Applications</button>
+        <button class="close-btn"><i class='bx bx-x'></i> Close</button>
+      </div>
+    </div>
+
+    <div class="internship-card">
+      <h3><i class='bx bx-robot'></i> AI/ML Research Intern</h3>
+      <p>Duration: 6 months • ₹25,000/month</p>
+      <div class="skills-button">Python, Machine Learning, TensorFlow</div>
+      <div class="card-buttons">
+        <div class="status-btn">Active</div>
+        <button><i class='bx bx-edit'></i> Edit</button>
+        <button><i class='bx bx-show'></i> View Applications</button>
+        <button class="close-btn"><i class='bx bx-x'></i> Close</button>
+      </div>
+    </div>
+
+    <div class="internship-card">
+      <h3><i class='bx bx-block'></i> Blockchain Developer Intern</h3>
+      <p>Duration: 3 months • ₹20,000/month</p>
+      <div class="skills-button">Solidity, Ethereum</div>
+      <div class="card-buttons">
+        <div class="status-btn">Active</div>
+        <button><i class='bx bx-edit'></i> Edit</button>
+        <button><i class='bx bx-show'></i> View Applications</button>
+        <button class="close-btn"><i class='bx bx-x'></i> Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

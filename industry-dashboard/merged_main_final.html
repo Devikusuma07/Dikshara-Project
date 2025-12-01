@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industry Dashboard - Mentor Portal (Final)</title>
+
+  <!-- Global Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+
+  <style>
+    .menu a.active {
+      background: #fa87f4;
+      color: #fff !important;
+      font-weight: 600;
+      border-radius: 6px;
+    }
+    .menu a.active i { color: #fff !important; }
+    a:focus, a:active, button:focus, button:active {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h1>Dekshara</h1>
+    <div class="divider"></div>
+
+    <div class="mentor-section">
+      <img src="large.jpeg" alt="Mentor Photo">
+      <h3>Industry Mentor</h3>
+    </div>
+
+    <ul class="menu">
+      <li><a href="#" data-section="pi"><i class="fa-solid fa-briefcase"></i> Post Internship</a></li>
+      <li><a href="#" data-section="am"><i class="fa-solid fa-robot"></i> AI Talent Match</a></li>
+      <li><a href="#" data-section="tp"><i class="fa-solid fa-chart-line"></i> Track Performance</a></li>
+      <li><a href="#" data-section="an"><i class="fa-solid fa-users"></i> Alumni Network</a></li>
+      <li><a href="#" data-section="pm"><i class="fa-solid fa-handshake"></i> Partnerships</a></li>
+      <li><a href="#" data-section="bv"><i class="fa-solid fa-cubes"></i> Blockchain Verify</a></li>
+      <li><a href="logout.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+    </ul>
+  </div>
+
+
+  
+
+
+  <!-- Main content -->
+  <div class="main-content">
+    <div id="content" style="background:white; padding:20px; min-height:80vh;">
+      <h2>Welcome to Industry Dashboard</h2>
+      <p>Select a section from the sidebar to view details.</p>
+    </div>
+    <footer>© 2025 Dikshara. All Rights Reserved.</footer>
+  </div>
+    
+
+  <script>
+    const sectionMap = {
+      pi: { html: 'pi.html', css: 'pi.css' },
+      am: { html: 'am.html', css: 'am.css' },
+      tp: { html: 'tp.html', css: 'tp.css' },
+      an: { html: 'an.html', css: 'an.css' },
+      pm: { html: 'pm.html', css: 'pm.css' },
+      bv: { html: 'bc.html', css: 'bc.css' }
+    };
+
+    const contentDiv = document.getElementById('content');
+    let activeCSS = null;
+
+    async function loadSection(sectionKey) {
+      const map = sectionMap[sectionKey];
+      if (!map) return;
+
+      // highlight active
+      document.querySelectorAll('.menu a').forEach(a => a.classList.remove('active'));
+      document.querySelector(`.menu a[data-section="${sectionKey}"]`)?.classList.add('active');
+
+      // apply CSS
+      if (activeCSS) activeCSS.remove();
+      activeCSS = document.createElement('link');
+      activeCSS.rel = 'stylesheet';
+      activeCSS.href = map.css;
+      document.head.appendChild(activeCSS);
+
+      // load HTML
+      const res = await fetch(map.html);
+      const html = await res.text();
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const body = doc.body ? doc.body.innerHTML : html;
+      contentDiv.innerHTML = body;
+
+      // load scripts
+      doc.querySelectorAll('script').forEach(s => {
+        const script = document.createElement('script');
+        if (s.src) script.src = s.src;
+        else script.textContent = s.textContent;
+        document.body.appendChild(script);
+      });
+    }
+
+    document.querySelectorAll('.menu a[data-section]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        loadSection(e.currentTarget.dataset.section);
+      });
+    });
+  </script>
+
+</body>
+</html>

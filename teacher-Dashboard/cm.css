@@ -1,0 +1,56 @@
+
+  body { font-family: 'Poppins', sans-serif; background-color: #f4f7f8; margin: 0; padding: 0; }
+  header { background-color: #1e3a8a; color: #fff; padding: 20px; text-align: center; font-size: 1.5rem; font-weight: 600; }
+
+  /* Overview Cards */
+  .stats { display: flex; justify-content: space-around; flex-wrap: wrap; margin: 20px; }
+  .card { background-color: #fff; padding: 20px; border-radius: 12px; width: 220px; margin: 10px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .card h2 { color: #1e3a8a; font-size: 2rem; margin-bottom: 5px; display: flex; justify-content: center; align-items: center; gap: 5px; }
+  .card p { color: #555; font-size: 1rem; }
+
+  /* Filters */
+  .filters { display: flex; justify-content: center; gap: 15px; margin: 20px; }
+  .filters select, .filters input { padding: 8px 12px; border-radius: 8px; border: 1px solid #ccc; }
+  .filters i { margin-right: 5px; color: #1e3a8a; }
+
+  /* Table */
+  table { width: 95%; margin: 0 auto 30px auto; border-collapse: collapse; background-color: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  th, td { padding: 12px 15px; text-align: left; }
+  th { background-color: #1e3a8a; color: #fff; }
+  tr:nth-child(even) { background-color: #f4f7f8; }
+  .btn { padding: 6px 12px;
+    border-radius: 8px;
+    border: none; 
+    color: #fff;
+     cursor: pointer; 
+     font-size: 0.85rem; 
+     display: flex; 
+     align-items: center; 
+     gap: 5px; 
+     transition: 0.2s;
+    padding: 5px 10px;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;        /* gap between icon and text inside button */
+  margin-right: 8px; }
+     
+
+  .approve { background-color: #3e8a5a; }
+  .approve:hover { background-color: #5bda85; }
+  .reject { background-color: #cb5959; }
+  .reject:hover { background-color: #a21d1d; }
+
+
+  .status { font-weight: 600; padding: 4px 8px; border-radius: 12px; color: #fff; display: inline-flex; align-items: center; gap: 5px; }
+  .Completed { background-color: #348251; }
+  .Pending { background-color: #fbcf60; }
+  .Rejected { background-color: #a13333; }
+
+  /* Charts */
+  
+
+  /* Leaderboard */
+  .leaderboard { width: 95%; margin: 20px auto; }
+  .leaderboard h3 { color: #1e3a8a; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .leader-card { background-color: #fff; padding: 12px 20px; margin-bottom: 10px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; }

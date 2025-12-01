@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deeksha - student monitoring</title>
+  <!-----student monitoring-->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="sm.css"/>
+</head>
+<body>
+  <div class="dashboard">
+    <h1>🎓 Student Monitoring Dashboard</h1>
+    <p>Track real-time progress of students in internships</p>
+
+    <!-- Top Overview Cards -->
+    <div class="overview">
+      <div class="card">
+        <h3>Total Students</h3>
+        <p>45</p>
+      </div>
+      <div class="card">
+        <h3>Active Internships</h3>
+        <p>32</p>
+      </div>
+      <div class="card">
+        <h3>Avg Rating</h3>
+        <p>4.6</p>
+      </div>
+      <div class="card">
+        <h3>Need Attention</h3>
+        <p>3</p>
+      </div>
+    </div>
+
+     <h2>Student Analysis</h2>
+  <div class="chart-container">
+    <canvas id="progressChart"></canvas>
+  </div>
+
+
+    <!-- Student Progress -->
+      <h3>Student Progress Overview</h3>
+    <table class="student-table">
+      <thead>
+        <tr>
+          <th>Photo</th>
+          <th>Name</th>
+          <th>Department</th>
+          <th>Roll No</th>
+          <th>Year</th>
+          <th>Internship</th>
+          <th>Progress</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img src="s1.jpg" alt="Armin" class="profile-pic"></td>
+          <td>Armin Arlet</td>
+          <td>CSE</td>
+          <td>22CSE101</td>
+          <td>2nd Year</td>
+          <td>Web Dev at TechCorp</td>
+          <td><div class="circle" data-progress="85"><span>85%</span></div></td>
+          <td><span class="status active">Active</span></td>
+        </tr>
+        <tr>
+          <td><img src="s2.webp" alt="Historia" class="profile-pic"></td>
+          <td>Historia Reiss</td>
+          <td>AIML</td>
+          <td>22AIML203</td>
+          <td>2nd Year</td>
+          <td>Data Analyst at DataHub</td>
+          <td><div class="circle" data-progress="92"><span>92%</span></div></td>
+          <td><span class="status completed">Completed</span></td>
+        </tr>
+        <tr>
+          <td><img src="s3.jpeg" alt="Jean" class="profile-pic"></td>
+          <td>Jean Kirstein</td>
+          <td>IT</td>
+          <td>22IT145</td>
+          <td>3rd Year</td>
+          <td>UI/UX at DesignStudio</td>
+          <td><div class="circle" data-progress="78"><span>78%</span></div></td>
+          <td><span class="status active">Active</span></td>
+        </tr>
+        <tr>
+          <td><img src="s4.jpg" alt="Sasha" class="profile-pic"></td>
+          <td>Sasha Braus</td>
+          <td>ECE</td>
+          <td>22ECE172</td>
+          <td>3rd Year</td>
+          <td>Mobile Dev at AppWorks</td>
+          <td><div class="circle" data-progress="88"><span>88%</span></div></td>
+          <td><span class="status active">Active</span></td>
+        </tr>
+        <tr>
+          <td><img src="s5.jpg" alt="Connie" class="profile-pic"></td>
+          <td>Connie Springer</td>
+          <td>EEE</td>
+          <td>22EEE190</td>
+          <td>2nd Year</td>
+          <td>DevOps at CloudTech</td>
+          <td><div class="circle" data-progress="75"><span>75%</span></div></td>
+          <td><span class="status hold">On Hold</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <canvas id="myChart" width="400" height="200"></canvas>
+
+     
+
+   <script>
+    // Circular Progress Fill
+    document.querySelectorAll(".circle").forEach(circle => {
+      let value = circle.getAttribute("data-progress");
+      let degrees = (value / 100) * 360;
+      circle.style.background = `conic-gradient(#00f2fe ${degrees}deg, #ddd ${degrees}deg)`;
+    });
+    // Attendance Pie Chart
+    const ctx = document.getElementById('progressChart');
+
+    new Chart(ctx, {
+      type: 'bar', // vertical bars
+      data: {
+        labels: ['Armin Arlet', 'Historia Reiss', 'Jean Kirstein', 'Sasha Braus', 'Connie Springer'],
+        datasets: [{
+  label: 'Progress (%)',
+  data: [85, 92, 78, 88, 75],
+  backgroundColor: '#C3B1E1',      // default color
+  hoverBackgroundColor: '#5C288D', // darker color on hover
+  borderRadius: 8,
+  barPercentage: 0.6
+}]
+
+      },
+      options: {
+        indexAxis: 'x', // vertical bars
+        responsive: true,
+        maintainAspectRatio: false, // allows full height
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return context.raw + '%';
+              
+              }
+            }
+          }
+        },
+        scales: {
+          y: {
+            max: 100,
+            ticks: {
+              callback: value => value + '%',
+              color: '#111',
+              font: { size: 14 }
+            },
+            grid: {
+              color: '#ddd'
+            }
+          },
+          x: {
+            ticks: {
+              color: '#111',
+              font: { size: 14 }
+            },
+            grid: { display: false }
+          }
+        }
+      }
+    });
+
+
+    </script>
+</body>
+</html>

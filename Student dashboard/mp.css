@@ -1,0 +1,543 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #e0f7fa, #e1bee7);
+  overflow-x: hidden;
+}
+
+
+/* Sidebar Profile */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100vh;           /* Full height */
+  background: #fff;
+  padding: 20px;
+  border-right: 1px solid #eee;
+  overflow-y: auto;        /* Scroll inside sidebar if content is tall */
+  z-index: 10;             /* Stay above main content */
+}
+/*.main {
+  padding: 20px;
+  margin-left: 280px; /* same as sidebar width 
+  flex: 1;
+  overflow-y: auto;
+}
+html {
+  scroll-behavior: smooth;
+}*/
+
+
+
+.profile-pic {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-pic img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 3px solid #7e57c2;
+  object-fit: cover;
+}
+
+.student-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.student-info h2 {
+  font-size: 18px;
+  margin: 5px 0;
+}
+.student-info p{
+  font-size: 14px;
+  margin: 5px 0;
+  color: #444;
+}
+.divider {
+  border: none;
+  border-top: 1px solid #d9d9d9; /* light cement color */
+  margin: 10px 0 20px 0;
+}
+
+
+.details p {
+font-size: 12px;
+  margin: 5px 0;
+  color: #444;
+}
+
+.details span {
+  font-weight: bold;
+  color: #6a1b9a;
+}
+
+.status {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #e9f8ee;
+  color: #27ae60;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.divider {
+  border: none;
+  border-top: 1px solid #d9d9d9; /* light cement color */
+  margin: 30px 0 40px 0;
+}
+
+.contact {
+  margin-top: 20px;
+}
+
+.contact p {
+  font-size: 14px;
+  margin: 10px 0;
+}
+.divider {
+  border: none;
+  border-top: 1px solid #d9d9d9; /* light cement color */
+  margin: 15px 0 30px 0;
+}
+
+.social-links {
+  background: #f9f2df;
+  border-radius: 14px;
+  padding: 20px;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 25px;
+}
+
+.social-links h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.social-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #000000;
+  font-size: 15px;
+  text-decoration: none;
+  margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+
+.social-item:hover {
+  color: #00bcd4;
+}
+
+.social-item i {
+  font-size: 20px;
+}
+
+/* Specific brand colors */
+.social-item.linkedin i {
+  color: #0077b5;
+}
+
+.social-item.twitter i {
+  color: #1da1f2;
+}
+
+.social-item.instagram i {
+  color: #e4405f;
+}
+
+.username {
+  margin-left: auto;
+  font-size: 13px;
+  color: #888;
+}
+
+/* Layout for the row of info cards */
+main-content {
+  margin-left: 300px; /* Push right to not overlap sidebar */
+  padding: 30px 40px;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Card Styles */
+.info-card {
+  background: linear-gradient(135deg, #7e57c2, #e1bee7);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-top: 20px;
+
+}
+
+.info-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #e0e0e0;
+  margin-bottom: 15px;
+}
+
+/* Tags (Skills & Interests) */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  background: rgb(255, 255, 255);
+  color: #000000;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.tag.blue {
+  background: rgb(255, 255, 255);
+  border-color: rgb(255, 255, 255);
+  color: #000000;
+}
+
+/* Projects */
+
+
+
+.project-card .project-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.project-card img {
+  width: 90px;
+  height: 90px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.project-details h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.project-details p {
+  font-size: 13px;
+  color: #bbb;
+  margin: 0;
+}
+
+
+/* Right side main section */
+.main-content {
+  margin-left: 300px; /* keeps content away from sidebar */
+  padding: 30px;
+  min-height: 100vh;
+  overflow-y: auto;
+  margin-bottom: -180px;
+ 
+}
+
+/* Cards layout */
+.chart-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+  margin-top: 120px;
+  margin-left: 270px;
+  margin-bottom: 20px;
+  
+ 
+}
+
+.card {
+  width: 400px;
+  height: 470px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  text-align: center;
+  
+}
+
+.large-card {
+  width: 470px;
+  height: 410px;
+}
+
+.performance-card {
+  margin-top: 20px;
+  margin-left: 385px;
+  margin-bottom: 20px;
+  width: 470px;
+  height: 420px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  padding: 20px;
+  text-align: center;
+  flex: 1 1 100%;  /* Make it take full width row */
+}
+
+
+    /*.header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }*/
+
+    .header h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      margin: 0;
+    }
+
+    .header span {
+      font-size: 13px;
+      color: #888;
+    }
+
+    .chart-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 140px;
+      margin-top: 10px;
+    }
+
+    .legend {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-right: 10px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .color-box {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      margin-right: 8px;
+    }
+
+    .footer {
+      background: #fff8e1;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      color: #555;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    canvas {
+      display: block;
+    }
+
+    /* Make the line chart area taller */
+    .line-chart-container {
+      height: 130px;
+      margin-top: -5px;
+    }
+
+    .score-text {
+      position: absolute;
+      top: 48%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 20px;
+      font-weight: 700;
+      color: #333;
+      text-align: center;
+    }
+
+    .score-text small {
+      display: block;
+      font-size: 13px;
+      color: #777;
+      margin-top: -5px;
+    }
+
+    .chart-container {
+      position: relative;
+    }
+
+    /* ===== Profile.css merged below ===== */
+    .profile-embedded{ display:flex; gap:24px; align-items:flex-start; }
+    .profile-sidebar{ width:280px; background:#fff; padding:18px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.06); }
+    .profile-main{ flex:1; display:flex; flex-direction:column; gap:18px; }
+
+    /* Make the injected content visually separate inside .content */
+    .content .profile-embedded{ padding:12px; }
+
+    /* Small utilities */
+    .fade-in{ animation: fadeIn 300ms ease both; }
+    .fade-out{ animation: fadeOut 240ms ease both; }
+
+    @keyframes fadeIn{ from{ opacity:0; transform: translateY(6px);} to{ opacity:1; transform: translateY(0);} }
+    @keyframes fadeOut{ from{ opacity:1; transform: translateY(0);} to{ opacity:0; transform: translateY(6px);} }
+
+    /* Subtle slide-in for the profile sidebar (used when injecting) */
+    .slide-in-left{ animation: slideInLeft 360ms cubic-bezier(.2,.9,.2,1) both; }
+    @keyframes slideInLeft{
+      from{ transform: translateX(-18px); opacity:0; }
+      to{ transform: translateX(0); opacity:1; }
+    }
+
+    /* Responsive: collapse behavior adapted for fixed sidebar in pro4.css */
+    @media (max-width: 900px){
+      .profile-embedded{ flex-direction:column; }
+      /* When sidebar is fixed in pro4.css, the embedded profile should not
+         try to reflow into a full-width column inside the main content area.
+         Instead, keep sidebar section reasonably sized and let profile-main
+         take remaining space. */
+      .profile-sidebar{ width:240px; position:relative; flex-shrink:0; }
+      .profile-main{ width:calc(100% - 240px); }
+    }
+
+    @media (max-width: 600px){
+      .profile-sidebar img{ width:110px; height:110px; }
+      .chart-row{ flex-direction:column; align-items:stretch; }
+      .card{ width:100%; }
+    }
+
+    /* When the global sidebar is fixed (narrow screens), make the injected
+       profile content stack vertically so it doesn't create horizontal overlap. */
+    @media (max-width: 700px){
+      .profile-embedded{ display:flex; flex-direction:column; gap:12px; }
+      .profile-sidebar{ width:100% !important; position:relative; box-shadow:none; }
+      .profile-main{ width:100% !important; }
+      .content .profile-embedded{ padding:8px; }
+    }
+
+    /* >>> profile embed responsive/layout rules to avoid overlapping the fixed sidebar */
+
+    /* container used when profile.html is injected */
+    .profile-embedded{
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* left column inside the injected profile (not the global sidebar) */
+    .profile-sidebar{
+      flex: 0 0 260px; /* fixed column inside content */
+      width: 260px;
+      box-sizing: border-box;
+      transition: transform 280ms ease, opacity 220ms ease;
+      transform: translateX(0);
+    }
+
+    /* subtle slide-in utility class (added by JS) */
+    .slide-in-left{
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    /* ensure main profile area uses remaining space and wraps content */
+    .profile-main{
+      flex: 1 1 auto;
+      min-width: 0; /* allow children to shrink properly */
+    }
+
+    /* at smaller widths make the profile columns stack vertically,
+       so there is no chance of horizontal collision with the fixed global sidebar */
+    @media (max-width: 900px){
+      .profile-embedded{ gap: 20px; }
+      .profile-sidebar{ flex-basis: 220px; width: 220px; }
+    }
+
+    @media (max-width: 700px){
+      .profile-embedded{
+        flex-direction: column;
+        gap: 14px;
+      }
+      .profile-sidebar{
+        width: 100%;
+        flex-basis: auto;
+        transform: none; /* don't slide off-canvas at very small widths */
+      }
+      .profile-main{
+        width: 100%;
+      }
+    }
+
+    /* small safety: prevent elements inside profile from using negative margins that cause overflow */
+    .profile-embedded img,
+    .profile-embedded .card{
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* >>> Profile chart layout overrides: two pies side-by-side, performance below <<< */
+    /* Target only injected profile area to avoid changing global layout */
+    .content .profile-main .chart-row {
+      margin-left: 0; /* remove global left offset */
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Make each chart card take ~50% of available width (minus gap) */
+    .content .profile-main .chart-row .card {
+      width: calc(50% - 10px);
+      max-width: 48%;
+      min-width: 260px; /* keep reasonable minimum for canvas */
+      box-sizing: border-box;
+    }
+
+    /* Ensure the performance card sits below and is full-width */
+    .content .profile-main .performance-card {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin-left: 0 !important;
+      margin-top: 18px;
+      box-sizing: border-box;
+    }
+
+    /* Responsive: stack charts vertically on small screens */
+    @media (max-width: 900px) {
+      .content .profile-main .chart-row {
+        flex-direction: column;
+        gap: 14px;
+      }
+      .content .profile-main .chart-row .card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+    }

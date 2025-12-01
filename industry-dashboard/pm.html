@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partnership Management Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="pm.css"/>
+
+</head>
+<body>
+
+<h2>Partnership Management</h2>
+<p class="description">Collaborate with educational institutions for talent acquisition</p>
+
+<!-- Summary Cards -->
+<div class="summary-cards">
+  <div class="summary-card"><h3>2</h3><p>Active Partnerships</p></div>
+  <div class="summary-card"><h3>2</h3><p>Requests Sent</p></div>
+  <div class="summary-card"><h3>2</h3><p>Incoming Requests</p></div>
+</div>
+
+<!-- MAIN CARD 1: Browse Institutions -->
+<div class="main-card">
+  <h3 class="title">Browse Institutions</h3>
+  <div class="colour-card-container">
+    <div class="colour-card">
+      <h3>IIT Bangalore</h3>
+      <p class="icon-text"><i class="fa-solid fa-user-group"></i> 12,500 students</p>
+      <p class="icon-text"><i class="fa-solid fa-building-columns"></i> 15 departments</p>
+      <p class="icon-text"><i class="fa-solid fa-star"></i> 4.8</p>
+      <button class="btn btn-send">Send Request</button>
+    </div>
+    <div class="colour-card">
+      <h3>NIT Trichy</h3>
+      <p class="icon-text"><i class="fa-solid fa-user-group"></i> 8,900 students</p>
+      <p class="icon-text"><i class="fa-solid fa-building-columns"></i> 12 departments</p>
+      <p class="icon-text"><i class="fa-solid fa-star"></i> 4.6</p>
+      <button class="btn btn-send">Send Request</button>
+    </div>
+    <div class="colour-card">
+      <h3>VIT Vellore</h3>
+      <p class="icon-text"><i class="fa-solid fa-user-group"></i> 15,000 students</p>
+      <p class="icon-text"><i class="fa-solid fa-building-columns"></i> 18 departments</p>
+      <p class="icon-text"><i class="fa-solid fa-star"></i> 4.5</p>
+      <button class="btn btn-send">Send Request</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CARD 2: Sent Requests -->
+<div class="main-card">
+  <h3 class="title">Sent Requests</h3>
+  <div class="colour-card-container">
+    <div class="colour-card">
+      <h3>IIT Bangalore</h3>
+      <p class="status pending">Pending</p>
+      <p>Looking forward to collaboration in software development internships</p>
+      <p>📅 Requested: 2025-10-05</p>
+      <p>🎯 Quota: 20 students</p>
+      <p>⏱️ Duration: 3 months</p>
+      <button class="btn btn-decline">Withdraw Request</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CARD 3: Received Requests -->
+<div class="main-card">
+  <h3 class="title">Received Requests</h3>
+  <div class="colour-card-container">
+    <div class="colour-card">
+      <h3>NIT Trichy</h3>
+      <p>Request for partnership program in data science domain</p>
+      <p>📅 Received: 2025-10-09</p>
+      <p>🎯 Quota: 10 students</p>
+      <p>⏱️ Duration: 4 months</p>
+      <button class="btn btn-approve">Approve</button>
+      <button class="btn btn-decline">Decline</button>
+      <button class="btn btn-negotiate">Negotiate</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CARD 4: Active Partnerships -->
+<div class="main-card">
+  <h3 class="title">Active Partnerships</h3>
+  <div class="colour-card-container">
+    <div class="colour-card">
+      <p><strong>IIT Delhi</strong> - Gold</p>
+      <p class="icon-text"><i class="fa-solid fa-user-group"></i> 45 students enrolled</p>
+      <p class="icon-text"><i class="fa-solid fa-book"></i> 8 programs</p>
+      <p class="icon-text"><i class="fa-solid fa-calendar-days"></i> Since 2024-01-15</p>
+      <a href="#" class="view-details">View Partnership Details</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

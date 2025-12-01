@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Institution Dashboard - Final 2</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: white;
+      display: flex;
+    }
+
+    /* ---------- Sidebar ---------- */
+    .sidebar {
+      width: 250px;
+      background: rgba(205, 161, 255, 0.95);
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      padding: 20px 0;
+      transition: width 0.4s ease;
+      overflow: hidden;
+      color: #000000;
+    }
+    .sidebar.collapsed { width: 85px; }
+
+    .logo-section {
+      text-align: center;
+      padding-bottom: 30px;
+      transition: all 0.3s;
+    }
+    .logo-section img {
+      width: 50px;
+      margin: 10px 0;
+    }
+    .logo-section h2 {
+      font-size: 18px;
+      letter-spacing: 1px;
+      color: #fff;
+      margin: 0;
+    }
+    .logo-section p {
+      font-size: 13px;
+      color: #ddd;
+      margin: 0;
+    }
+    .toggle-btn {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    /* ---------- Nav Menu ---------- */
+    .nav-links {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+    .nav-links li {
+      position: relative;
+      padding: 14px 25px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: all 0.3s ease;
+    }
+    .nav-links li:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: scale(1.03);
+    }
+    .nav-links li.active {
+      background: linear-gradient(90deg, #8e7ab5, #b784b7);
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      animation: glow 0.8s ease-in-out forwards;
+    }
+    @keyframes glow {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+    .nav-links i {
+      font-size: 20px;
+      color: #fff;
+      min-width: 25px;
+      text-align: center;
+    }
+    .nav-links span {
+      font-size: 16px;
+      white-space: nowrap;
+      transition: opacity 0.3s ease;
+    }
+    .sidebar.collapsed .nav-links span {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* ---------- Dashboard Area ---------- */
+    .main-content {
+      margin-left: 250px;
+      background: white;
+      width: calc(100% - 250px);
+      transition: margin-left 0.4s ease;
+      padding: 20px;
+    }
+    .sidebar.collapsed ~ .main-content {
+      margin-left: 85px;
+      width: calc(100% - 85px);
+    }
+    #content iframe {
+      width: 100%;
+      height: calc(100vh - 60px);
+      border: none;
+      background: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="logo-section">
+      <h2>DIKSHARA</h2>
+      <img src="vit.jpeg" alt="VIT Logo">
+      <h2>VIT University</h2>
+      <p>Institution portal</p>
+      <button class="toggle-btn" id="toggleBtn"><i class="ri-menu-line"></i></button>
+    </div>
+
+    <ul class="nav-links">
+      <li class="active" data-section="io"><i class="ri-building-4-line"></i><span>Institution Overview</span></li>
+      <li data-section="ip"><i class="ri-hand-coin-line"></i><span>Industry Partnerships</span></li>
+      <li data-section="fm"><i class="ri-team-line"></i><span>Faculty Management</span></li>
+      <li data-section="sm"><i class="ri-user-3-line"></i><span>Student Management</span></li>
+      <li data-section="ar"><i class="ri-bar-chart-2-line"></i><span>Analytics & Reports</span></li>
+      <li data-section="vs"><i class="ri-shield-check-line"></i><span>Verification Status</span></li>
+      <li data-section="Logout"><span>Logout</span></li>
+    </ul>
+  </div>
+
+  <!-- Dashboard Content -->
+  <div class="main-content">
+    <div id="content">
+      <iframe id="contentFrame" src="io.html"></iframe>
+    </div>
+     <footer>© 2025 Dikshara. All Rights Reserved.</footer>
+  </div>
+   
+
+  <script>
+    const sectionMap = {
+      io: "io.html",
+      ip: "ip.html",
+      fm: "fm.html",
+      sm: "sm.html",
+      ar: "ar.html",
+      vs: "vs.html"
+    };
+
+    // Section switching
+    document.querySelectorAll(".nav-links li").forEach(li => {
+      li.addEventListener("click", () => {
+        document.querySelectorAll(".nav-links li").forEach(x => x.classList.remove("active"));
+        li.classList.add("active");
+        const iframe = document.getElementById("contentFrame");
+        iframe.src = sectionMap[li.dataset.section];
+      });
+    });
+
+    // Sidebar collapse toggle
+    const sidebar = document.getElementById("sidebar");
+    const toggleBtn = document.getElementById("toggleBtn");
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("collapsed");
+      document.querySelector(".main-content").classList.toggle("collapsed");
+    });
+  </script>
+</body>
+</html>

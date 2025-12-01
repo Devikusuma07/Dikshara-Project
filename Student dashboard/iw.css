@@ -1,0 +1,169 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f0f4f8;
+  }
+
+  .internship-wallet {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+  }
+
+  h2 {
+    text-align: center;
+    color: #333;
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  /* Wallet Cards */
+  .wallet-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .wallet-card {
+    width: 300px;
+    background: linear-gradient(135deg, #7B1FA2, #9C27B0);
+    color: #fff;
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wallet-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  }
+
+  .wallet-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+  }
+
+  .wallet-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+
+  .wallet-number {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .wallet-btn {
+    padding: 10px 20px;
+    border: none;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .wallet-btn:hover {
+    background: rgba(255,255,255,0.4);
+  }
+
+  .wallet-card::before {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    top: -50px;
+    right: -50px;
+    z-index: 0;
+  }
+
+  .wallet-card * {
+    position: relative;
+    z-index: 1;
+  }
+
+  @media(max-width: 1000px){
+    .wallet-cards {
+      justify-content: center;
+    }
+  }
+
+  /* Earnings Section */
+  .earnings-section {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px 25px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+    margin-bottom: 50px;
+  }
+
+  .earnings-section h3 {
+    text-align: center;
+    color: #7B1FA2;
+    margin-bottom: 20px;
+    font-size: 28px;
+  }
+
+  .total-earnings {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+  }
+
+  /* Internship Cards */
+  .internship-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .internship-item {
+    flex: 1 1 250px;
+    background: #f3e5f5;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .internship-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+
+  .internship-name {
+    font-weight: 600;
+    color: #4A148C;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  .internship-amount {
+    font-size: 18px;
+    font-weight: 700;
+    color: #7B1FA2;
+  }
+
+  /* Chart Container */
+  .chart-container {
+    margin-top: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }

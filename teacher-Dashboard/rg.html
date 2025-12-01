@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Generation - Mentor Dashboard | Deeksha</title>
+
+  <!-- Google Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="rg.css"/>
+
+  
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="logo-section">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Deeksha_logo.png" alt="Deeksha Logo" onerror="this.style.display='none'">
+      <h2>Mentor - Report Generation</h2>
+    </div>
+    <i class="fas fa-user-tie fa-2x"></i>
+  </header>
+
+  <div class="dashboard-container">
+    <h1>Report Generation</h1>
+    <p class="subtitle">Auto-generate and verify internship completion reports</p>
+
+    <!-- Filter Section -->
+    <div class="card">
+      <h3>Filter Options</h3>
+      <div class="filters">
+        <select>
+          <option>Student Name / ID</option>
+        </select>
+        <select>
+          <option>Batch / Department</option>
+        </select>
+        <select>
+          <option>Duration</option>
+        </select>
+        <select>
+          <option>Subject / Skill Area</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Report Type Section -->
+    <div class="card">
+      <h3>Report Types</h3>
+      <div class="report-types">
+        <button><i class="fas fa-chart-line"></i> Performance Report</button>
+        <button><i class="fas fa-user-check"></i> Attendance Report</button>
+        <button><i class="fas fa-comments"></i> Feedback Report</button>
+        <button><i class="fas fa-lightbulb"></i> Skill Gap Analysis</button>	
+      </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="card">
+      <h3>Analytics Dashboard</h3>
+      <div class="charts">
+        <div class="chart-box">
+          <h4><i class="fas fa-chart-bar"></i> Subject-wise Performance</h4>
+          <canvas id="barChart"></canvas>
+        </div>
+        <div class="chart-box">
+          <h4><i class="fas fa-chart-pie"></i> Attendance Distribution</h4>
+          <canvas id="pieChart"></canvas>
+        </div>
+        <div class="chart-box">
+          <h4><i class="fas fa-chart-line"></i> Progress Trend Over Time</h4>
+          <canvas id="lineChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="card">
+      <h3>Export Reports</h3>
+      <div class="actions">
+        <button><i class="fas fa-file-pdf"></i> Download PDF</button>
+        <button><i class="fas fa-file-excel"></i> Export Excel</button>
+        <button><i class="fas fa-print"></i> Print Report</button>
+      </div>
+    </div>
+
+    <!-- Recent Reports -->
+    <div class="card">
+      <h3>Recent Reports</h3>
+      <div class="recent-reports">
+        <div class="report-item">
+          <span><b>Q3 2025 Internship Summary</b></span>
+          <button>Download</button>
+        </div>
+        <div class="report-item">
+          <span><b>Student Performance Report - Sept 2025</b></span>
+          <button>Download</button>
+        </div>
+        <div class="report-item">
+          <span><b>Department Analytics - Computer Science</b></span>
+          <button>Download</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 Deeksha Mentor Dashboard | Designed by Devi Kusuma</footer>
+
+  <!-- Chart.js Script -->
+  <script>
+    // Bar Chart
+    new Chart(document.getElementById("barChart"), {
+      type: "bar",
+      data: {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May"],
+        datasets: [{
+          label: "Average Performance (%)",
+          data: [78, 82, 85, 90, 87],
+          backgroundColor: "#4c6ef5"
+        }]
+      },
+      options: { responsive: true, plugins: { legend: { display: false } } }
+    });
+
+    // Pie Chart
+    new Chart(document.getElementById("pieChart"), {
+      type: "pie",
+      data: {
+        labels: ["Present", "Absent"],
+        datasets: [{
+          data: [85, 15],
+          backgroundColor: ["#7b61ff", "#d6d9f9"]
+        }]
+      },
+      options: { responsive: true }
+    });
+
+    // Line Chart
+    new Chart(document.getElementById("lineChart"), {
+      type: "line",
+      data: {
+        labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
+        datasets: [{
+          label: "Progress Trend",
+          data: [70, 75, 80, 88],
+          borderColor: "#4c6ef5",
+          backgroundColor: "rgba(76,110,245,0.2)",
+          fill: true,
+          tension: 0.3
+        }]
+      },
+      options: { responsive: true }
+    });
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIKSHARA - Mentor Dashboard</title>
+
+  <!-- ✅ Font Awesome official CDN (ensures icons load clearly) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+  <!-- ===== Sidebar ===== -->
+  <div class="sidebar">
+    <h1>DIKSHARA</h1>
+    <div class="divider"></div>
+
+    <div class="mentor-section">
+      <img src="lucky.png" alt="Dr. Levi Ackerman">
+      <h3>Dr. Levi Ackerman</h3>
+    </div>
+
+    <ul class="menu">
+      <li><a href="#" data-section="student"><i class="fa-solid fa-user-graduate"></i> Student Monitoring</a></li>
+      <li><a href="#" data-section="feedback"><i class="fa-solid fa-comments"></i> Mentor Feedback</a></li>
+      <li><a href="#" data-section="report"><i class="fa-solid fa-file-lines"></i> Report Generation</a></li>
+      <li><a href="#" data-section="analytics"><i class="fa-solid fa-chart-line"></i> Skill Gap Analytics</a></li>
+      <li><a href="#" data-section="institution"><i class="fa-solid fa-building-columns"></i> Institution Dashboard</a></li>
+      <li><a href="#" data-section="credit"><i class="fa-solid fa-credit-card"></i> Credit Management</a></li>
+      <li><a href="#" data-section="faculty"><i class="fa-solid fa-chalkboard-user"></i> Faculty Portal</a></li>
+      <li><a herf="#" data-section="logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+      
+    </ul>
+  </div>
+
+  <!-- ===== Main Content ===== -->
+  <div class="main-content" id="content">
+    <div class="main-header">
+      <h2>Welcome to the Mentor Dashboard</h2>
+      <i class="fa-solid fa-user-circle fa-2x" style="color:#1e3a8a;"></i>
+    </div>
+    <p>Select a section from the sidebar to view its content.</p>
+  </div>
+
+  <!-- ===== Script for Section Switching ===== -->
+  <script>
+    const content = document.getElementById('content');
+    const menuLinks = document.querySelectorAll('.menu a');
+
+    const sections = {
+      student: `
+        <div class="main-header">
+          <h2>Student Monitoring</h2>
+          <i class="fa-solid fa-user-graduate fa-2x" style="color:#1e3a8a;"></i>
+        </div>
+        <p>Track and evaluate student attendance, assignments, and performance.</p>
+      `,
+      feedback: `
+        <div class="main-header">
+          <h2>Mentor Feedback</h2>
+          <i class="fa-solid fa-comments fa-2x" style="color:#1e3a8a;"></i>
+        </div>
+        <p>Provide feedback on student progress and improvement suggestions.</p>
+      `,
+      report: `
+        <div class="main-header">
+          <h2>Report Generation</h2>
+          <i class="fa-solid fa-file-lines fa-2x" style="color:#1e3a8a;"></i>
+        </div>
+        <p>Generate academic or internship completion reports automatically.</p>
+      `,
+      analytics: `
+        <div class="main-header">
+          <h2>Skill Gap Analytics</h2>
+          <i class="fa-solid fa-chart-line fa-2x" style="color:#1e3a8a;"></i>
+        </div>
+        <p>Identify learning gaps and recommend personalized learning paths.</p>
+      `,
+      institution: `
+        <div class="main-header">
+          <h2>Institution Dashboard</h2>
+          <i class="fa-solid fa-building-columns fa-2x" style="color:#1e3a8a;"></i>
+        </div>
+        <p>View department statistics, partnerships, and collaboration reports.</p>
+      `,
+      credit: `
+        <div class="main-header">
+          <h2>Credit Management</h2>
+          <i class="fa-solid fa-credit-card fa-2x" style="color:#1e3a8a;"></i>
+        </div>
+        <p>Manage student credit points and performance-based rewards.</p>
+      `,
+      faculty: `
+        <div class="main-header">
+          <h2>Faculty Portal</h2>
+          <i class="fa-solid fa-chalkboard-user fa-2x" style="color:#1e3a8a;"></i>
+        </div>
+        <p>Collaborate with faculty members for mentorship and training.</p>
+      `
+    };
+
+    menuLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector('.menu a.active')?.classList.remove('active');
+        link.classList.add('active');
+        const section = link.dataset.section;
+        content.style.opacity = '0';
+        setTimeout(() => {
+          content.innerHTML = sections[section];
+          content.style.opacity = '1';
+        }, 300);
+      });
+    });
+    // ...existing code...
+// ...existing code...
+  </script>
+
+</body>
+</html>
+
+ 

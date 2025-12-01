@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internship Progress Dashboard</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f3e5f5, #ede7f6);
+      margin: 0;
+      padding: 40px;
+      color: #2e004f;
+    }
+
+    .internship-section {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 25px rgba(74, 20, 140, 0.1);
+      animation: fadeIn 1s ease forwards;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .section-title {
+      font-size: 34px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #4A148C;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    .header-row, .internship-card {
+      display: grid;
+      grid-template-columns: 1.4fr 1.4fr 0.8fr 0.8fr 0.8fr 1fr;
+      align-items: center;
+      padding: 16px 25px;
+      border-radius: 14px;
+    }
+
+    .header-row {
+      background: rgba(128, 0, 128, 0.08);
+      font-weight: 600;
+      font-size: 15px;
+      color: #4A148C;
+    }
+
+    .internship-card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(155, 89, 182, 0.15);
+      margin-top: 15px;
+      transition: 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .internship-card::before {
+      content: "";
+      position: absolute;
+      top: -70px;
+      right: -70px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(156, 39, 176, 0.25), transparent);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .internship-card:hover {
+      box-shadow: 0 8px 22px rgba(156, 39, 176, 0.25);
+      transform: translateY(-5px);
+    }
+
+    .internship-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .icon-box {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #8e24aa, #ba68c8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: #fff;
+      box-shadow: 0 5px 15px rgba(142, 36, 170, 0.3);
+    }
+
+    .internship-title {
+      font-weight: 600;
+      font-size: 17px;
+      color: #311b92;
+    }
+
+    .details-inline {
+      font-size: 14px;
+      color: #6a1b9a;
+      font-weight: 500;
+    }
+
+    /* Progress Circle */
+    .progress-circle {
+      width: 55px;
+      height: 55px;
+      position: relative;
+      margin: auto;
+    }
+
+    .progress-circle svg {
+      transform: rotate(-90deg);
+    }
+
+    .progress-circle circle {
+      fill: none;
+      stroke-width: 6;
+      stroke-linecap: round;
+    }
+
+    .progress-circle .bg {
+      stroke: #e0d7f3;
+    }
+
+    .progress-circle .progress {
+      stroke: url(#gradientStroke);
+      transition: stroke-dashoffset 0.6s ease;
+      filter: drop-shadow(0px 0px 6px rgba(155, 39, 176, 0.4));
+    }
+
+    .progress-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 12px;
+      font-weight: 600;
+      color: #4A148C;
+    }
+
+    /* Status */
+    .status {
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      width: 90px;
+    }
+
+    .status.ongoing {
+      background: #ede7f6;
+      color: #7b1fa2;
+    }
+
+    .status.completed {
+      background: #f3e5f5;
+      color: #8e24aa;
+    }
+
+    .score {
+      text-align: center;
+      font-weight: 700;
+      color: #4a148c;
+    }
+
+    .certificate a {
+      color: #8e24aa;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .certificate a:hover {
+      color: #6a1b9a;
+      text-decoration: underline;
+    }
+
+    /* Smooth appear animation */
+    .internship-card {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: cardFadeUp 0.6s ease forwards;
+    }
+
+    @keyframes cardFadeUp {
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .internship-card:nth-child(2) { animation-delay: 0.1s; }
+    .internship-card:nth-child(3) { animation-delay: 0.2s; }
+    .internship-card:nth-child(4) { animation-delay: 0.3s; }
+    .internship-card:nth-child(5) { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+  <div class="internship-section">
+    <h2 class="section-title"> My Internship Progress</h2>
+
+    <div class="header-row">
+      <div>Internship Title</div>
+      <div>Company | Duration | Mentor</div>
+      <div>Progress</div>
+      <div>Status</div>
+      <div>Score</div>
+      <div>Certificate</div>
+    </div>
+
+    <!-- Internship 1 -->
+    <div class="internship-card">
+      <div class="internship-info">
+        <div class="icon-box">💻</div>
+        <div class="internship-title">Web Development Intern</div>
+      </div>
+      <div class="details-inline">CodeCrafters Pvt. Ltd. | 3 Months | Mr. Rakesh</div>
+
+      <div class="progress-circle" data-progress="80">
+        <svg width="55" height="55">
+          <defs>
+            <linearGradient id="gradientStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ab47bc"/>
+              <stop offset="100%" stop-color="#7b1fa2"/>
+            </linearGradient>
+          </defs>
+          <circle class="bg" cx="27" cy="27" r="22"></circle>
+          <circle class="progress" cx="27" cy="27" r="22"></circle>
+        </svg>
+        <div class="progress-text">80%</div>
+      </div>
+
+      <div class="status ongoing">Ongoing</div>
+      <div class="score">85/100</div>
+      <div class="certificate"><a href="#">None</a></div>
+    </div>
+
+    <!-- Internship 2 -->
+    <div class="internship-card">
+      <div class="internship-info">
+        <div class="icon-box">📊</div>
+        <div class="internship-title">Data Analysis Intern</div>
+      </div>
+      <div class="details-inline">Insight Analytics | 2 Months | Ms. Priya</div>
+
+      <div class="progress-circle" data-progress="60">
+        <svg width="55" height="55">
+          <circle class="bg" cx="27" cy="27" r="22"></circle>
+          <circle class="progress" cx="27" cy="27" r="22"></circle>
+        </svg>
+        <div class="progress-text">60%</div>
+      </div>
+
+      <div class="status ongoing">Ongoing</div>
+      <div class="score">74/100</div>
+      <div class="certificate"><a href="#">None</a></div>
+    </div>
+
+    <!-- Internship 3 -->
+    <div class="internship-card">
+      <div class="internship-info">
+        <div class="icon-box">🎨</div>
+        <div class="internship-title">UI/UX Design Intern</div>
+      </div>
+      <div class="details-inline">Creative Minds Studio | 1 Month | Mr. Aditya</div>
+
+      <div class="progress-circle" data-progress="100">
+        <svg width="55" height="55">
+          <circle class="bg" cx="27" cy="27" r="22"></circle>
+          <circle class="progress" cx="27" cy="27" r="22"></circle>
+        </svg>
+        <div class="progress-text">100%</div>
+      </div>
+
+      <div class="status completed">Completed</div>
+      <div class="score">92/100</div>
+      <div class="certificate"><a href="#">UIUX_Certificate.pdf</a></div>
+    </div>
+
+    <!-- Internship 4 -->
+    <div class="internship-card">
+      <div class="internship-info">
+        <div class="icon-box">🤖</div>
+        <div class="internship-title">Machine Learning Intern</div>
+      </div>
+      <div class="details-inline">AI Innovators Lab | 4 Months | Dr. Kiran</div>
+
+      <div class="progress-circle" data-progress="45">
+        <svg width="55" height="55">
+          <circle class="bg" cx="27" cy="27" r="22"></circle>
+          <circle class="progress" cx="27" cy="27" r="22"></circle>
+        </svg>
+        <div class="progress-text">45%</div>
+      </div>
+
+      <div class="status ongoing">Ongoing</div>
+      <div class="score">70/100</div>
+      <div class="certificate"><a href="#">None</a></div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.progress-circle').forEach(circle => {
+      const progress = circle.getAttribute('data-progress');
+      const radius = 22;
+      const circumference = 2 * Math.PI * radius;
+      const offset = circumference - (progress / 100) * circumference;
+      const progressCircle = circle.querySelector('.progress');
+      progressCircle.style.strokeDasharray = circumference;
+      progressCircle.style.strokeDashoffset = offset;
+    });
+  </script>
+
+</body>
+</html>

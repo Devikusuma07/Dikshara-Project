@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Dashboard - Merged Final</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+
+  <style>
+    body { margin: 0; font-family: 'Poppins', sans-serif; background: white; display: flex; }
+    .sidebar { width: 250px; background: #2f3157f2; height: 100vh; position: fixed; left:0; top:0; padding:20px 0; transition: width 0.4s; overflow:hidden; color:#fff; }
+    .sidebar.collapsed { width:85px; }
+    .logo-section { text-align:center; padding-bottom:30px; }
+    .logo-section img { width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #7e57c2;
+  object-fit: cover; }
+    .logo-section h2 { font-size:18px; letter-spacing:1px; color:#fff; margin:0; }
+    .logo-section p { font-size:13px; color:#ddd; margin:0; }
+    .toggle-btn { background:transparent; border:none; color:#fff; font-size:20px; cursor:pointer; }
+    .nav-links { list-style:none; padding:0; margin-top:20px; }
+    .nav-links li { padding:14px 25px; cursor:pointer; display:flex; align-items:center; gap:15px; transition:all .3s; }
+    .nav-links li:hover { background: rgba(255,255,255,0.1); transform: scale(1.03); }
+    .nav-links li.active { background: linear-gradient(90deg,#8e7ab5,#b784b7); border-radius:8px; box-shadow:0 0 15px rgba(255,255,255,0.2); }
+    .nav-links i { font-size:20px; color:#fff; min-width:25px; text-align:center; }
+    .nav-links span { font-size:16px; white-space:nowrap; transition:opacity .3s; }
+    .sidebar.collapsed .nav-links span { opacity:0; pointer-events:none; }
+    .main-content { margin-left:250px; background:white; width:calc(100% - 250px); transition:margin-left .4s; padding:20px; }
+    .sidebar.collapsed ~ .main-content { margin-left:85px; width:calc(100% - 85px); }
+    #content iframe { width:100%; height:calc(100vh - 60px); border:none; background:white; }
+    a:focus, a:active, button:focus, button:active { outline:none !important; box-shadow:none !important; }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar" id="sidebar">
+    <div class="logo-section">
+      <h2>DIKSHARA</h2>
+      <img src="cute.jpeg" alt="VIT Logo">
+      <p>Mikasa Adams</p>
+      <button class="toggle-btn" id="toggleBtn"><i class="ri-menu-line"></i></button>
+    </div>
+
+    <ul class="nav-links">
+      <li class="active" data-section="mp"><i class="ri-user-3-line"></i><span>My Profile</span></li>
+      <li data-section="am"><i class="ri-robot-line"></i><span>AI Internship Matchmaking</span></li>
+      <li data-section="mpro"><i class="ri-lightbulb-line"></i><span>Micro-Project</span></li>
+      <li data-section="mi"><i class="ri-briefcase-line"></i><span>My Internship</span></li>
+      <li data-section="sr"><i class="ri-bar-chart-line"></i><span>Skill Readiness Hub</span></li>
+      <li data-section="iw"><i class="ri-wallet-line"></i><span>Internship Wallet</span></li>
+      <li data-section="lr"><i class="ri-file-list-3-line"></i><span>Logbook & Reports</span></li>
+      <li data-section="mf"><i class="ri-feedback-line"></i><span>Feedback & Mentor Review</span></li>
+      <li data-section="logout"><i class="ri-logout-box-line"></i><span>Logout</span></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div id="content">
+      <iframe id="contentFrame" src="mp.html"></iframe>
+    </div>
+    <footer>© 2025 Dikshara. All Rights Reserved.</footer>
+  </div>
+  
+
+  <script>
+    const sectionMap = {
+      mp: "mp.html",
+      am: "am.html",
+      mpro: "mpro.html",
+      mi: "mi.html",
+      sr: "sr.html",
+      iw: "iw.html",
+      lr: "lr.html",
+      mf: "mf.html"
+    };
+
+    document.querySelectorAll(".nav-links li").forEach(li => {
+      li.addEventListener("click", () => {
+        const section = li.dataset.section;
+        if (section === "logout") {
+          window.location.href = "login.html";
+          return;
+        }
+        document.querySelectorAll(".nav-links li").forEach(x => x.classList.remove("active"));
+        li.classList.add("active");
+        const iframe = document.getElementById("contentFrame");
+        iframe.src = sectionMap[section];
+      });
+    });
+
+    const sidebar = document.getElementById("sidebar");
+    const toggleBtn = document.getElementById("toggleBtn");
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("collapsed");
+      document.querySelector(".main-content").classList.toggle("collapsed");
+    });
+
+  </script>
+</body>
+</html>

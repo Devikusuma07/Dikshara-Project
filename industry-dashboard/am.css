@@ -1,0 +1,292 @@
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .ai-talent-section {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .ai-talent-header h2 {
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #000000;
+    }
+
+    .ai-talent-header p {
+      color: #555;
+      font-size: 16px;
+    }
+
+    .stats-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .stat-card {
+      background: #f5f5f5;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 25px rgba(25, 118, 210, 0.25);
+    }
+
+    .stat-card h3 {
+      font-size: 30px;
+      margin: 10px 0 5px 0;
+      color: #000000;
+    }
+
+    .stat-card p {
+      color: #666;
+      font-size: 15px;
+    }
+
+    .filter-panel {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-width: 150px;
+    }
+
+    .filter-group label {
+      font-size: 14px;
+      color: #444;
+    }
+
+    .filter-group select, .filter-group input[type="number"], .filter-group input[type="checkbox"] {
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .skills-options label {
+      margin-right: 10px;
+      font-size: 13px;
+    }
+
+    .filter-actions {
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+    }
+
+    .filter-actions button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .apply-btn {
+      background: #d184f2;
+    }
+
+    .reset-btn {
+      background: #757575;
+    }
+
+    .candidates-section h3 {
+      font-size: 22px;
+      margin-top: 30px;
+      color: #bc51f5;
+    }
+
+    .candidates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .candidate-card {
+      background: #f9f9f9;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .candidate-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .candidate-header h4 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .match-bar {
+      background: #ddd;
+      border-radius: 10px;
+      height: 10px;
+      overflow: hidden;
+      margin: 10px 0;
+    }
+
+    .match-fill {
+      background: linear-gradient(90deg, #d142f5, #dd98fb);
+      height: 100%;
+      border-radius: 10px;
+      width: 0;
+      transition: width 1.2s ease;
+    }
+
+    .skills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 10px 0;
+    }
+
+    .skill {
+      background: #e3f2fd;
+      color: #d485ef;
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 8px;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .popup-content {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 10px;
+      width: 400px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+/* View Button - Light Blue with Glow */
+.btn.view {
+  background: linear-gradient(135deg, #dcbbfb, #90caf9);
+  color: #0d47a1;
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn.view:hover {
+  background: linear-gradient(135deg, #eb90f9, #cd64f6);
+  box-shadow: 0 6px 20px rgba(33, 150, 243, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Schedule Button - Green with Glow */
+.btn.schedule {
+  background: linear-gradient(135deg, #99b69b, #a4fba9);
+  color: white;
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(67, 160, 71, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn.schedule:hover {
+  background: linear-gradient(135deg, #43a047, #2e7d32);
+  box-shadow: 0 6px 20px rgba(67, 160, 71, 0.5);
+  transform: translateY(-2px);
+}
+
+.stats-cards .stat-card {
+  background: linear-gradient(135deg, #e1bee7, #ce93d8); /* Light violet gradient */
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(156, 39, 176, 0.2);
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stats-cards .stat-card::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+
+.stats-cards .stat-card::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 80px;
+  height: 80px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+}
+
+.card-icon {
+  color: #fff; /* White icon for contrast */
+  margin-bottom: 10px;
+  display: block;
+}
+
+
+

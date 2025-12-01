@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verification Main Card | VIT University</title>
+
+<!-- Lucide JS for icons -->
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.266.0/dist/lucide.min.js"></script>
+<link rel="stylesheet" href="vs.css"/>
+
+
+</head>
+<body>
+
+<h1>Verification Status</h1>
+
+<div class="main-verification-card">
+  <!-- Main Header -->
+  <div class="main-header">
+    <i data-lucide="shield-check"></i>
+    <div>
+      <h2>Institution Verified ✓</h2>
+      <p>Your institution has been verified by the DIKSHARA platform</p>
+    </div>
+  </div>
+
+  <!-- Sub-cards -->
+  <div class="sub-cards">
+    <div class="sub-card">
+      <i data-lucide="calendar"></i>
+      <div>
+        <span>Verified On</span>
+        <p>January 15, 2024</p>
+      </div>
+    </div>
+    <div class="sub-card">
+      <i data-lucide="calendar"></i>
+      <div>
+        <span>Valid Until</span>
+        <p>January 14, 2026</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Main Full-size Card -->
+<div class="main-doc-card">
+  <h2><i data-lucide="file-text"></i> Verification Documents</h2>
+  <div class="document-list">
+    <div class="document-card">
+      <div class="doc-info">
+        <h4>NAAC Accreditation Certificate</h4>
+        <p>Uploaded on 2024-01-15</p>
+      </div>
+      <div class="doc-status">
+        <i data-lucide="check-circle"></i> Verified
+        <button onclick="alert('Downloading NAAC Certificate')">Download</button>
+      </div>
+    </div>
+
+    <div class="document-card">
+      <div class="doc-info">
+        <h4>University Registration</h4>
+        <p>Uploaded on 2024-01-15</p>
+      </div>
+      <div class="doc-status">
+        <i data-lucide="check-circle"></i> Verified
+        <button onclick="alert('Downloading University Registration')">Download</button>
+      </div>
+    </div>
+
+    <div class="document-card">
+      <div class="doc-info">
+        <h4>AICTE Approval</h4>
+        <p>Uploaded on 2024-01-15</p>
+      </div>
+      <div class="doc-status">
+        <i data-lucide="check-circle"></i> Verified
+        <button onclick="alert('Downloading AICTE Approval')">Download</button>
+      </div>
+    </div>
+
+    <div class="document-card">
+      <div class="doc-info">
+        <h4>Address Proof</h4>
+        <p>Uploaded on 2024-01-15</p>
+      </div>
+      <div class="doc-status">
+        <i data-lucide="check-circle"></i> Verified
+        <button onclick="alert('Downloading Address Proof')">Download</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Initialize all Lucide icons
+  lucide.createIcons();
+</script>
+
+</body>
+</html>

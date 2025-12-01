@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  background: #f3f3f3;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 280px;
+  background-color: #000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+/* User Info */
+.user-info {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.photo-border {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid white;
+  margin: 0 auto 10px;
+}
+
+.student-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.email-section {
+  position: relative;
+  text-align: center;
+}
+
+.color-line {
+  height: 3px;
+  width: calc(100% + 1cm); /* 0.5 cm extra on both sides */
+  margin-left: -0.5cm;      /* shifts the line 0.5 cm left */
+  background: linear-gradient(90deg, #ff6b6b, #feca57, #1dd1a1, #54a0ff);
+  background-size: 400% 400%;
+  animation: colorChange 6s linear infinite;
+  border-radius: 2px; /* optional: smooth edges */
+}
+
+
+@keyframes colorChange {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+.email {
+  margin: 8px 0;
+  font-weight: 500;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.role {
+  font-size: 13px;
+  color: #ccc;
+}
+
+/* Sidebar Menu */
+.menu {
+  list-style: none;
+  padding: 20px 0;
+  margin: 0;
+  width: 260px; /* sidebar width */
+  background-color: #111; /* black sidebar */
+  height: 100vh; /* full screen height */
+  display: flex;
+  flex-direction: column;
+}
+
+.menu li {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* space between icon and text */
+  padding: 15px 20px;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  white-space: nowrap; /* prevent breaking text */
+  border-radius: 10px; /* rounded edges */
+  transition: all 0.3s ease;
+}
+
+.menu li svg {
+  width: 22px;
+  height: 22px;
+  fill: white; /* icon color */
+  flex-shrink: 0; /* prevents icon from shrinking */
+}
+
+.menu li:hover {
+  background: #9d00d7; /* purple highlight */
+  border-left: 4px solid #3d014a; /* left indicator */
+  border-radius: 10px; /* maintain rounded edges on hover */
+}
+
+.menu li.active {
+  background: #6a00b0;
+  border-left: 4px solid #3d014a;
+}
+
+.menu li span {
+  display: inline-block;
+}
+
+/* Optional Scroll for Sidebar if too long */
+.menu {
+  overflow-y: auto;
+}
+
+/* Main Content */
+.content {
+  flex: 1;
+  padding: 40px;
+}

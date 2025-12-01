@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Dikshara</title>
+  <style>
+     /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #87CEEB, #f3bcfe);
+      overflow: hidden;
+    }
+
+    /* Background Motion */
+    .login-bg {
+      position: absolute;
+      width: 120%;
+      height: 120%;
+      background: radial-gradient(circle at center, #ffffff22, #00000011);
+      animation: float 10s ease-in-out infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(-20px); }
+      100% { transform: translateY(20px); }
+    }
+
+    /* Circular Transparent Login Box */
+    .login-container {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(12px);
+      border-radius: 50%;
+      width: 600px;
+      height: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 40px;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: rgb(57, 57, 57);
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: #404040cc;
+      margin-bottom: 20px;
+    }
+
+    .subtitle span {
+      color: #d333bb;
+      font-weight: 600;
+    }
+
+    form {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      text-align: left;
+      font-size: 0.9rem;
+      color: #404040cc;
+    }
+
+    input {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      background: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
+    }
+
+    .login-btn {
+      background: #00b5a5;
+      color: white;
+      font-weight: 600;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s ease;
+    }
+
+    .login-btn:hover {
+      background: #009b8e;
+    }
+
+    .signup-text {
+      margin-top: 20px;
+      font-size: 0.9rem;
+    }
+
+    .signup-text a {
+      color: #ffe27d;
+      text-decoration: none;
+    }
+
+    .signup-text a:hover {
+      text-decoration: underline;
+    }
+
+    /* Demo Buttons */
+    .demo-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .demo-btn {
+      background: #ffffff88;
+      border: none;
+      color: #333;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s;
+    }
+
+    .demo-btn:hover {
+      background: #ffffffcc;
+      transform: scale(1.05);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .login-container {
+        width: 340px;
+        height: 340px;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    body {
+    animation: fadeIn 0.4s ease-in;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  </style>
+</head>
+<body>
+  <div class="login-bg"></div>
+
+  <div class="login-container">
+    <h1>Welcome Back</h1>
+    <p class="subtitle">Sign in to your <span>Dikshara</span> account</p>
+
+    <!-- Demo Login Buttons -->
+    <div class="demo-buttons">
+      <button class="demo-btn" id="studentDemo">Student Demo</button>
+      <button class="demo-btn" id="facultyDemo">Faculty Demo</button>
+      <button class="demo-btn" id="industryDemo">Industry Demo</button>
+      <button class="demo-btn" id="institutionDemo">Institution Demo</button>
+    </div>
+
+    <form id="loginForm">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" required>
+
+      <button type="submit" class="login-btn">Sign In</button>
+    </form>
+
+    <p class="signup-text">
+      Don't have an account? 
+      <a href="signup.html">Create Organisation</a>
+    </p>
+  </div>
+
+  <script>
+    // Demo users
+const demos = {
+  studentDemo: { email: "mikasa@gmail.com", pass: "123", redirect: "../Student dashboard/merged_main_final.html" },
+  facultyDemo: { email: "levi@gmail.com", pass: "123", redirect: "../teacher-dashboard/merged_main_v2.html" },
+  industryDemo: { email: "konoha@gmail.com", pass: "123", redirect: "../industry-dashboard/merged_main_final.html" },
+  institutionDemo: { email: "vit@edu.in", pass: "123", redirect: "../institution-dashboard/merged_main_final_2.html" }
+};
+
+// Fill demo credentials
+Object.keys(demos).forEach(id => {
+  document.getElementById(id).addEventListener("click", () => {
+    const demo = demos[id];
+    document.getElementById("email").value = demo.email;
+    document.getElementById("password").value = demo.pass;
+  });
+});
+
+// Login form submit
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  const matchedDemo = Object.values(demos).find(demo => demo.email === email && demo.pass === password);
+
+  if (matchedDemo) {
+    alert(`Welcome back, ${email}! Redirecting to your dashboard...`);
+    window.location.href = matchedDemo.redirect;
+  } else {
+    alert("Invalid email or password!");
+  }
+  });
+
+// Fill demo credentials
+Object.keys(demos).forEach(id => {
+  document.getElementById(id).addEventListener("click", () => {
+    const demo = demos[id];
+    document.getElementById("email").value = demo.email;
+    document.getElementById("password").value = demo.pass;
+  });
+});
+
+
+document.getElementById("studentDemo").addEventListener("click", function() {
+  window.location.href = "../Student dashboard/merged_main_final.html";
+});
+
+document.getElementById("teacherDemo").addEventListener("click", function() {
+  window.location.href = "../teacher-dashboard/merged_main_v2.html";
+});
+
+document.getElementById("industryDemo").addEventListener("click", function() {
+  window.location.href = "../industry-dashboard/merged_main_final.html";
+});
+
+document.getElementById("institutionDemo").addEventListener("click", function() {
+  window.location.href = "../institution-dashboard/merged_main_final_2.html";
+});
+
+
+// Login form submit
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  const matchedDemo = Object.values(demos).find(demo => demo.email === email && demo.pass === password);
+
+  if (matchedDemo) {
+    alert(`Welcome back, ${email}! Redirecting to your dashboard...`);
+    window.location.href = matchedDemo.redirect;
+  } else {
+    alert("Invalid email or password!");
+  }
+});
+
+
+  </script>
+</body>
+</html>

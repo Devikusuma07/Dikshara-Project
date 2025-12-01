@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Talent Match - Industry Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="am.css"/>
+  
+</head>
+<body>
+
+  <section class="ai-talent-section">
+    <div class="ai-talent-header">
+      <h2>AI Talent Match</h2>
+      <p>Find the best candidates using AI-powered recommendations</p>
+    </div>
+
+   
+       <div class="stats-cards">
+  <div class="stat-card">
+    <i class="fas fa-users fa-2x card-icon"></i>
+    <h3>245</h3>
+    <p>Total Applicants</p>
+  </div>
+  <div class="stat-card">
+    <i class="fas fa-star fa-2x card-icon"></i>
+    <h3>89</h3>
+    <p>High Match (&gt;80%)</p>
+  </div>
+  <div class="stat-card">
+    <i class="fas fa-check-circle fa-2x card-icon"></i>
+    <h3>18</h3>
+    <p>Selected</p>
+  </div>
+  <div class="stat-card">
+    <i class="fas fa-tasks fa-2x card-icon"></i>
+    <h3>34</h3>
+    <p>Completed</p>
+  </div>
+</div>
+
+    </div>
+
+    <div class="filter-panel">
+      <div class="filter-group">
+        <label>Department</label>
+        <select id="dept">
+          <option value="all">All</option>
+          <option value="CSE">CSE</option>
+          <option value="ECE">ECE</option>
+          <option value="MECH">MECH</option>
+          <option value="IT">IT</option>
+        </select>
+      </div>
+
+      <div class="filter-group skills-options">
+        <label>Top Skills</label>
+        <label><input type="checkbox" value="Python"> Python</label>
+        <label><input type="checkbox" value="Machine Learning"> Machine Learning</label>
+        <label><input type="checkbox" value="Data Analysis"> Data Analysis</label>
+        <label><input type="checkbox" value="Web Dev"> Web Dev</label>
+        <label><input type="checkbox" value="Embedded"> Embedded</label>
+      </div>
+
+      <div class="filter-group">
+        <label>Availability (weeks)</label>
+        <input type="number" id="availability" placeholder="≤ 12" min="1" max="52">
+      </div>
+
+      <div class="filter-group">
+        <label>GPA threshold</label>
+        <input type="number" id="gpa" placeholder="≥ 7.5" min="0" max="10" step="0.1">
+      </div>
+
+      <div class="filter-actions">
+        <button class="apply-btn" onclick="applyFilters()">Apply Filters</button>
+        <button class="reset-btn" onclick="resetFilters()">Reset</button>
+      </div>
+    </div>
+
+    <div class="candidates-section">
+      <h3>Top Matched Candidates</h3>
+      <div class="candidates-grid" id="candidateList">
+        <!-- Candidate cards go here -->
+      </div>
+    </div>
+  </section>
+
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <h4 id="popupTitle"></h4>
+      <p>Candidate details and insights will appear here.</p>
+      <button class="btn view" onclick="closePopup()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // Sample candidate data
+    const candidates = [
+      {name:'Mikasa Ackerman', dept:'CSE', skills:['React','TypeScript','Tailwind'], gpa:3.8, availability:10, match:95},
+      {name:'Armin Arlet', dept:'ECE', skills:['Python','Data Analysis','SQL'], gpa:3.9, availability:8, match:92},
+      {name:'Historia Reiss', dept:'IT', skills:['UI/UX','Figma','Design Systems'], gpa:3.7, availability:12, match:88},
+      {name:'Jean Kirstein', dept:'MECH', skills:['Node.js','MongoDB','Express'], gpa:3.6, availability:15, match:85}
+    ];
+
+    function renderCandidates(list){
+      const container = document.getElementById('candidateList');
+      container.innerHTML='';
+      list.forEach(c=>{
+        const card = document.createElement('div');
+        card.className='candidate-card';
+        card.innerHTML = `
+          <div class="candidate-header"><h4>${c.name}</h4><span>GPA: ${c.gpa}</span></div>
+          <div class="match-bar"><div class="match-fill" style="width:0%"></div></div>
+          <p>${c.match}% Match</p>
+          <div class="skills">${c.skills.map(s=>`<div class="skill">${s}</div>`).join('')}</div>
+          <div class="action-buttons">
+            <button class="btn view" onclick="openPopup('${c.name}')">View Profile</button>
+            <button class="btn schedule">Schedule Interview</button>
+          </div>
+        `;
+        container.appendChild(card);
+        const bar = card.querySelector('.match-fill');
+        setTimeout(()=>bar.style.width=c.match+'%',100);
+      });
+    }
+
+    function applyFilters(){
+      const dept = document.getElementById('dept').value;
+      const gpa = parseFloat(document.getElementById('gpa').value) || 0;
+      const availability = parseInt(document.getElementById('availability').value) || Infinity;
+      const skillCheckboxes = document.querySelectorAll('.skills-options input:checked');
+      const selectedSkills = Array.from(skillCheckboxes).map(cb=>cb.value);
+
+      const filtered = candidates.filter(c=>
+        (dept==='all'||c.dept===dept) &&
+        c.gpa>=gpa &&
+        c.availability<=availability &&
+        selectedSkills.every(s=>c.skills.includes(s))
+      );
+      renderCandidates(filtered);
+    }
+
+   function resetFilters(){
+document.getElementById('dept').value='all';
+document.getElementById('gpa').value='';
+document.getElementById('availability').value='';
+document.querySelectorAll('.skills-options input').forEach(cb=>cb.checked=false);
+renderCandidates(candidates);
+}
+
+function openPopup(name){
+document.getElementById('popupTitle').innerText=name;
+document.getElementById('popup').style.display='flex';
+}
+
+function closePopup(){
+document.getElementById('popup').style.display='none';
+}
+
+// Initial render
+renderCandidates(candidates);
+</script>
+
+</body>
+</html>

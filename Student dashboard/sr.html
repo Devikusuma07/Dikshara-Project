@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skill Readiness Hub</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="sr.css">
+</head>
+<body>
+  <div class="hub-container">
+     
+    <h1>Skill Readiness Hub</h1>
+
+    <!-- Pie Charts Section -->
+    <div class="charts-container">
+      <div class="dashboard">
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="circular">
+        <canvas id="circle1"></canvas>
+        <div class="center-number">70%</div>
+      </div>
+      <canvas class="wave" id="wave1"></canvas>
+      <div class="label">Python & Cloud</div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="circular">
+        <canvas id="circle2"></canvas>
+        <div class="center-number">85%</div>
+      </div>
+      <canvas class="wave" id="wave2"></canvas>
+      <div class="label">Java & Data Analysis</div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <div class="circular">
+        <canvas id="circle3"></canvas>
+        <div class="center-number">60%</div>
+      </div>
+      <canvas class="wave" id="wave3"></canvas>
+      <div class="label">Leadership & Excel</div>
+    </div>
+  </div>
+
+    </div>
+    <h1>Skill Readiness Hub</h1>
+
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+      <button class="tab-btn active" data-target="courses">Courses</button>
+      <button class="tab-btn" data-target="bootcamps">Bootcamps</button>
+      <button class="tab-btn" data-target="certifications">Certifications</button>
+    </div>
+
+    <!-- Courses Section -->
+    <div class="section active" id="courses">
+      <div class="courses-container">
+        <div class="course-card">
+          <div class="course-title">Frontend Development</div>
+          <div class="course-details">Advanced React Patterns</div>
+          <div class="course-meta"><span>6 weeks</span><span class="rating">★ 4.8 (234)</span></div>
+          <button class="enroll-btn">Enroll Now ></button>
+        </div>
+        <div class="course-card">
+          <div class="course-title">Computer Science</div>
+          <div class="course-details">Data Structures & Algorithms</div>
+          <div class="course-meta"><span>8 weeks</span><span class="rating">★ 4.9 (567)</span></div>
+          <button class="enroll-btn">Enroll Now ></button>
+        </div>
+        <div class="course-card">
+          <div class="course-title">Soft Skills</div>
+          <div class="course-details">Professional Communication Skills</div>
+          <div class="course-meta"><span>4 weeks</span><span class="rating">★ 4.6 (892)</span></div>
+          <button class="enroll-btn">Enroll Now ></button>
+        </div>
+        <div class="course-card">
+          <div class="course-title">AI / ML</div>
+          <div class="course-details">Machine Learning Fundamentals</div>
+          <div class="course-meta"><span>10 weeks</span><span class="rating">★ 4.7 (423)</span></div>
+          <button class="enroll-btn">Enroll Now ></button>
+        </div>
+        <div class="course-card">
+          <div class="course-title">Management</div>
+          <div class="course-details">Agile Project Management</div>
+          <div class="course-meta"><span>3 weeks</span><span class="rating">★ 4.5 (345)</span></div>
+          <button class="enroll-btn">Enroll Now ></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootcamps Section -->
+    <div class="section" id="bootcamps">
+      <div class="info-section">
+        <h2>Intensive Bootcamps</h2>
+        <p>Join our upcoming bootcamps to master in-demand skills and gain real-world experience through guided projects.</p>
+        <button class="browse-btn">Browse Bootcamps</button>
+      </div>
+    </div>
+
+    <!-- Certifications Section -->
+    <div class="section" id="certifications">
+      <div class="info-section">
+        <h2>Industry Certifications</h2>
+        <p>Get certified by top organizations and showcase your achievements to employers worldwide.</p>
+        <button class="browse-btn">View Certifications</button>
+      </div>
+    </div>
+  </div>
+
+
+   <script>
+    // Gradient helper
+    function gradientColor(ctx, color1, color2) {
+      let gradient = ctx.createLinearGradient(0, 0, 200, 200);
+      gradient.addColorStop(0, color1);
+      gradient.addColorStop(1, color2);
+      return gradient;
+    }
+
+    // Animated circular chart
+    function createCircleChart(ctx, percent, color1, color2) {
+      return new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          datasets: [{
+            data: [0, 100],
+            backgroundColor: [gradientColor(ctx, color1, color2), '#eaeaea'],
+            borderWidth: 0,
+            cutout: '80%'
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false }, tooltip: { enabled: false } },
+          rotation: -1,
+          animation: {
+            onProgress: function(animation) {
+              const chart = animation.chart;
+              const dataset = chart.data.datasets[0];
+              const current = Math.round(percent * animation.currentStep / animation.numSteps);
+              dataset.data = [current, 100 - current];
+              chart.update();
+            }
+          }
+        }
+      });
+    }
+
+    // Wave chart
+    function createWaveChart(ctx, color) {
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: Array(10).fill(""),
+          datasets: [{
+            data: [10, 30, 25, 50, 40, 60, 35, 55, 45, 60],
+            fill: true,
+            borderColor: color,
+            backgroundColor: `${color}30`,
+            tension: 0.4,
+            borderWidth: 2,
+            pointRadius: 0
+          }]
+        },
+        options: {
+          plugins: { legend: { display: false }, tooltip: { enabled: false } },
+          scales: {
+            x: { display: false },
+            y: { display: false }
+          }
+        }
+      });
+    }
+
+    // Initialize Charts
+    const circle1 = document.getElementById('circle1').getContext('2d');
+    const circle2 = document.getElementById('circle2').getContext('2d');
+    const circle3 = document.getElementById('circle3').getContext('2d');
+
+    createCircleChart(circle1, 75, '#1E90FF', '#A020F0');
+    createCircleChart(circle2, 82, '#00BFFF', '#8A2BE2');
+    createCircleChart(circle3, 65, '#20B2AA', '#6A5ACD');
+
+    createWaveChart(document.getElementById('wave1'), '#1E90FF');
+    createWaveChart(document.getElementById('wave2'), '#8A2BE2');
+    createWaveChart(document.getElementById('wave3'), '#20B2AA');
+  </script>
+
+  <script>
+    // Tab navigation functionality
+    const tabs = document.querySelectorAll('.tab-btn');
+    const sections = document.querySelectorAll('.section');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(btn => btn.classList.remove('active'));
+        sections.forEach(sec => sec.classList.remove('active'));
+
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.target).classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

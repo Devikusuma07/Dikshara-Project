@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Management | VIT University</title>
+<link rel="stylesheet" href="sm.css"/>
+
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f6f5fa;
+    margin: 0;
+    padding: 40px;
+    color: #333;
+  }
+
+  h1 {
+    font-size: 26px;
+    color: #4b0082;
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 25px;
+    color: #555;
+  }
+
+  .stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 30px;
+  }
+
+  .stat-card {
+    background: #fff;
+    flex: 1;
+    min-width: 220px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    padding: 20px;
+    text-align: center;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  }
+
+  .stat-card::before {
+    content: "";
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 100px; height: 100px;
+    background: rgba(106,13,173,0.15);
+    border-radius: 50%;
+  }
+  .stat-card::after {
+    content: "";
+    position: absolute;
+    bottom: -30px; left: -30px;
+    width: 80px; height: 80px;
+    background: rgba(106,13,173,0.1);
+    border-radius: 50%;
+  }
+
+  .stat-icon {
+    font-size: 32px;
+    color: #6a0dad;
+  }
+  .stat-value {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  .stat-label {
+    font-size: 14px;
+    color: #777;
+  }
+
+  /* Upload Section */
+  .upload-section {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    padding: 25px;
+    margin-bottom: 40px;
+    transition: 0.3s;
+  }
+  .upload-section:hover {
+    transform: translateY(-3px);
+  }
+
+  .upload-area {
+    border: 2px dashed #6a0dad;
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+    color: #6a0dad;
+    background: #f8f4ff;
+    margin: 20px 0;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .upload-area:hover {
+    background: #ede2ff;
+  }
+
+  .upload-btn {
+    background: #6a0dad;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+  .upload-btn:hover {
+    background: #580a9c;
+    transform: scale(1.05);
+  }
+
+  /* Recent Students */
+  .recent-section {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    padding: 25px;
+  }
+
+  .recent-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .recent-header h2 {
+    font-size: 20px;
+    color: #4b0082;
+  }
+
+  .student-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 20px;
+  }
+
+  .student-card {
+    display: flex;
+    align-items: center;
+    background: #f8f4ff;
+    border-radius: 15px;
+    padding: 15px 20px;
+    transition: 0.3s;
+  }
+  .student-card:hover {
+    background: #ede2ff;
+    transform: scale(1.02);
+  }
+
+  .student-card img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+  }
+
+  .student-info {
+    flex-grow: 1;
+  }
+
+  .student-info h4 {
+    margin: 0;
+    color: #4b0082;
+  }
+
+  .student-info p {
+    margin: 3px 0;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .student-date {
+    font-size: 13px;
+    color: #999;
+  }
+
+  /* Modal for Upload */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-content {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    width: 420px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    animation: fadeIn 0.3s ease;
+    text-align: center;
+  }
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  .close-btn {
+    background: #ccc;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+  }
+  .close-btn:hover {
+    background: #aaa;
+  }
+</style>
+</head>
+<body>
+
+<h1>Student Management</h1>
+<p>Bulk upload students and manage student database</p>
+
+<!-- Stats Section -->
+<div class="stats-container">
+  <div class="stat-card">
+    <div class="stat-icon">🎓</div>
+    <div class="stat-value">8,942</div>
+    <div class="stat-label">Total Students</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-icon">💼</div>
+    <div class="stat-value">342</div>
+    <div class="stat-label">In Internships</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-icon">📈</div>
+    <div class="stat-value">87%</div>
+    <div class="stat-label">Placement Rate</div>
+  </div>
+</div>
+
+<!-- Upload Section -->
+<div class="upload-section">
+  <h2>📤 Bulk Upload Students</h2>
+  <p>Upload CSV file with student data (Name, Email, Department, Year, Skills)</p>
+
+  <div class="upload-area" onclick="openUploadModal()">
+    <p>📎 Click to upload or drag and drop</p>
+    <p><small>CSV file up to 10MB</small></p>
+  </div>
+
+  <button class="upload-btn" onclick="openUploadModal()">Upload Student Data</button>
+</div>
+
+<!-- Recent Students -->
+<div class="recent-section">
+  <div class="recent-header">
+    <h2>🕒 Recent Student Registrations</h2>
+  </div>
+
+  <div class="student-list">
+    <div class="student-card">
+      <img src="s3.png" alt="Mikasa Ackerman">
+      <div class="student-info">
+        <h4>Mikasa Ackerman</h4>
+        <p>CSE • 3rd Year</p>
+        <p class="student-date">📅 2025-10-10</p>
+      </div>
+    </div>
+
+    <div class="student-card">
+      <img src="s1.jpeg" alt="Eren Jaeger">
+      <div class="student-info">
+        <h4>Eren Jaeger</h4>
+        <p>IT • 4th Year</p>
+        <p class="student-date">📅 2025-10-10</p>
+      </div>
+    </div>
+
+    <div class="student-card">
+      <img src="s2.webp" alt="Annie Leonhart">
+      <div class="student-info">
+        <h4>Annie Leonhart</h4>
+        <p>ECE • 2nd Year</p>
+        <p class="student-date">📅 2025-10-09</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Upload -->
+<div id="uploadModal" class="modal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeUploadModal()">×</button>
+    <h2>Upload CSV File</h2>
+    <p>Select a CSV file to upload student data.</p>
+    <input type="file" accept=".csv" id="csvInput" style="margin:15px 0;">
+    <button class="upload-btn" onclick="uploadFile()">Upload Now</button>
+  </div>
+</div>
+
+<script>
+  function openUploadModal() {
+    document.getElementById('uploadModal').style.display = 'flex';
+  }
+
+  function closeUploadModal() {
+    document.getElementById('uploadModal').style.display = 'none';
+  }
+
+  function uploadFile() {
+    const fileInput = document.getElementById('csvInput');
+    if (!fileInput.files.length) {
+      alert('Please select a CSV file to upload.');
+      return;
+    }
+    const fileName = fileInput.files[0].name;
+    alert('✅ Successfully uploaded ' + fileName);
+    closeUploadModal();
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById('uploadModal');
+    if (event.target === modal) closeUploadModal();
+  };
+</script>
+
+</body>
+</html>

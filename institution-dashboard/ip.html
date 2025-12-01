@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partnership Management Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="ip.css"/>
+
+</head>
+<body>
+
+<h2>Partnership Management</h2>
+<p class="description">Collaborate with educational institutions for talent acquisition</p>
+
+<!-- Top Summary Cards -->
+<div class="summary-cards">
+  <div class="summary-card"><i class="fa-solid fa-handshake"></i><h3>10</h3><p>Active Partnerships</p></div>
+  <div class="summary-card"><i class="fa-solid fa-paper-plane"></i> <h3>7</h3><p>Requests Sent</p></div>
+  <div class="summary-card"> <i class="fa-solid fa-inbox"></i> <h3>5</h3><p>Incoming Requests</p></div>
+</div>
+
+<!-- Navigation Bar -->
+<div class="nav-bar">
+  <button class="tab-btn active" data-tab="browse"><i class="fa-solid fa-search"></i> Browse</button>
+  <button class="tab-btn" data-tab="sent"><i class="fa-solid fa-paper-plane"></i> Sent</button>
+  <button class="tab-btn" data-tab="received"><i class="fa-solid fa-inbox"></i> Received</button>
+  <button class="tab-btn" data-tab="active"><i class="fa-solid fa-handshake"></i> Active</button>
+</div>
+
+<!-- Browse Tab -->
+<div id="browse" class="tab-content card-container">
+  <div class="card">
+    <h3><i class="fa-solid fa-building-columns"></i> IIT Bangalore</h3>
+    <p class="icon-text"><i class="fa-solid fa-user-group"></i> 12,500 students</p>
+    <p class="icon-text"><i class="fa-solid fa-flask"></i> 15 departments</p>
+    <p class="icon-text"><i class="fa-solid fa-star"></i> 4.8 rating</p>
+    <button class="btn btn-send">Send Request</button>
+  </div>
+
+  <div class="card">
+    <h3><i class="fa-solid fa-building-columns"></i> NIT Trichy</h3>
+    <p class="icon-text"><i class="fa-solid fa-user-group"></i> 8,900 students</p>
+    <p class="icon-text"><i class="fa-solid fa-microscope"></i> 12 departments</p>
+    <p class="icon-text"><i class="fa-solid fa-star"></i> 4.6 rating</p>
+    <button class="btn btn-send">Send Request</button>
+  </div>
+
+  <div class="card">
+    <h3><i class="fa-solid fa-building-columns"></i> VIT Vellore</h3>
+    <p class="icon-text"><i class="fa-solid fa-user-group"></i> 15,000 students</p>
+    <p class="icon-text"><i class="fa-solid fa-flask"></i> 18 departments</p>
+    <p class="icon-text"><i class="fa-solid fa-star"></i> 4.5 rating</p>
+    <button class="btn btn-send">Send Request</button>
+  </div>
+</div>
+
+<!-- Sent Tab -->
+<div id="sent" class="tab-content card-container" style="display:none;">
+  <div class="card">
+    <h3><i class="fa-solid fa-building-columns"></i> IIT Bangalore</h3>
+    <p class="status pending">Pending</p>
+    <p>Looking forward to collaboration in software development internships</p>
+    <p>📅 Requested: 2025-10-05</p>
+    <p>🎯 Quota: 20 students</p>
+    <p>⏱️ Duration: 3 months</p>
+    <button class="btn btn-decline">Withdraw Request</button>
+  </div>
+</div>
+
+<!-- Received Tab -->
+<div id="received" class="tab-content card-container" style="display:none;">
+  <div class="card">
+    <h3><i class="fa-solid fa-building-columns"></i> NIT Trichy</h3>
+    <p>Request for partnership in data science domain</p>
+    <p>📅 Received: 2025-10-09</p>
+    <p>🎯 Quota: 10 students</p>
+    <p>⏱️ Duration: 4 months</p>
+    <button class="btn btn-approve">Approve</button>
+    <button class="btn btn-decline">Decline</button>
+    <button class="btn btn-negotiate">Negotiate</button>
+  </div>
+</div>
+
+<!-- Active Tab -->
+<div id="active" class="tab-content card-container" style="display:none;">
+  <div class="card">
+    <p><strong><i class="fa-solid fa-building-columns"></i> IIT Delhi</strong> - Gold Partnership</p>
+    <p class="icon-text"><i class="fa-solid fa-user-group"></i> 45 students enrolled</p>
+    <p class="icon-text"><i class="fa-solid fa-book"></i> 8 programs</p>
+    <p class="icon-text"><i class="fa-solid fa-calendar-days"></i> Since 2024-01-15</p>
+    <a href="#" class="view-details">View Partnership Details</a>
+  </div>
+</div>
+
+<script>
+const tabs = document.querySelectorAll('.tab-btn');
+const contents = document.querySelectorAll('.tab-content');
+
+tabs.forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    tabs.forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const target = tab.dataset.tab;
+    contents.forEach(c=> c.style.display=c.id===target?'flex':'none');
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,351 @@
+body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+    .dashboard-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px;
+    }
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #333;
+    }
+    header p {
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    /* Main Card */
+    .main-card {
+      background: #fff;
+      border-radius: 25px;
+      padding: 50px 30px 30px 30px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+      margin-bottom: 40px;
+    }
+    .main-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+    }
+    .main-card::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(108,92,231,0.2), rgba(168,133,247,0.2));
+      z-index: 0;
+    }
+    .main-card::after {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: -50px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(108,92,231,0.15), rgba(168,133,247,0.15));
+      z-index: 0;
+    }
+    .main-card .icon {
+      font-size: 60px;
+      color: #6c5ce7;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .main-card h3 {
+      font-size: 22px;
+      color: #333;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    .main-card p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 35px;
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Stats Cards in Main Card */
+    .stats-container {
+      display: flex;
+      gap: 15px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .stat-card {
+      flex: 1 1 22%;
+      background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+      color: #fff;
+      border-radius: 20px 0 20px 0;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+    .stat-card .stat-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .stat-card h4 {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    .stat-card p {
+      font-size: 12px;
+      margin:0;
+    }
+
+    /* Other dashboard sections */
+    .verify-section, .recent-verifications, .chart-section, .top-courses {
+      margin-bottom: 40px;
+    }
+    .verify-input {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .verify-input input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .verify-input button {
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: none;
+      background-color: #6c5ce7;
+      color: #fff;
+      cursor: pointer;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table th, table td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    table th { background: #f1f1f1; }
+    table td.verified { color: #28a745; font-weight:600; }
+    table td.pending { color: #f0ad4e; font-weight:600; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+    .dashboard-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px;
+    }
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #333;
+    }
+    header p {
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    /* Main Card */
+    .main-card {
+      background: #fff;
+      border-radius: 25px;
+      padding: 50px 30px 30px 30px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+      margin-bottom: 40px;
+    }
+    .main-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+    }
+    .main-card::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(108,92,231,0.2), rgba(168,133,247,0.2));
+      z-index: 0;
+    }
+    .main-card::after {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: -50px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(108,92,231,0.15), rgba(168,133,247,0.15));
+      z-index: 0;
+    }
+    .main-card .icon {
+      font-size: 60px;
+      color: #6c5ce7;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .main-card h3 {
+      font-size: 22px;
+      color: #333;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    .main-card p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 35px;
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Stats Cards in Main Card */
+    .stats-container {
+      display: flex;
+      gap: 15px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .stat-card {
+      flex: 1 1 22%;
+      background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+      color: #fff;
+      border-radius: 20px 0 20px 0;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+    .stat-card .stat-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .stat-card h4 {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    .stat-card p {
+      font-size: 12px;
+      margin:0;
+    }
+
+    /* Other dashboard sections */
+    .verify-section, .recent-verifications, .chart-section, .top-courses {
+      margin-bottom: 40px;
+    }
+    .verify-input {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .verify-input input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .verify-input button {
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: none;
+      background-color: #6c5ce7;
+      color: #fff;
+      cursor: pointer;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table th, table td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    table th { background: #f1f1f1; }
+    table td.verified { color: #28a745; font-weight:600; }
+    table td.pending { color: #f0ad4e; font-weight:600; }
+
+    .top-courses {
+  margin-top: 30px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.top-courses h2 {
+  margin-bottom: 15px;
+  color: #6c5ce7;
+}
+
+.course-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.course-card {
+  flex: 1 1 200px;
+  background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+  color: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}

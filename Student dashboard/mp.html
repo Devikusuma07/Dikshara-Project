@@ -1,0 +1,252 @@
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Profile Dashboard</title>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="mp.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <!-- ✅ Fixed Sidebar -->
+    <div class="sidebar">
+      <div class="profile-pic">
+        <img src="cute.jpeg" alt="Student">
+      </div>
+      <div class="student-info">
+        <span class="status">Active</span>
+        <h2> Mikasa Adams</h2>
+        <p>Roll No: 22CSE045</p>
+        <p>Department: CSE | Year: 2nd</p>
+        
+      </div>
+      <hr class="divider">
+      <div class="details">
+        <p><span>College:</span> ABC Institute of Technology</p>
+        <p><span>Mentor:</span> Dr. Suresh Kumar</p>
+        <p><span>Status:</span> Ongoing</p>
+        <p><span>CGPA:</span>9.75</p>
+      </div>
+      <hr class="divider">
+      <div class="contact">
+        <p>Email: mikasa@gmail.com</p>
+        <p>Phone: +91 7575757575</p>
+        <p>Address: 78 Maple Drive, New York, NY</p>
+      </div>
+      <hr class="divider">
+     <div class="social-links">
+  <h3>Social Media</h3>
+  <a href="#" class="social-item linkedin">
+    <i class="fab fa-linkedin"></i>
+    LinkedIn
+    <span class="username">mikasa-Adams</span>
+  </a>
+  <a href="#" class="social-item twitter">
+    <i class="fab fa-twitter"></i>
+    Twitter
+    <span class="username">@Mikasa Adams</span>
+  </a>
+  <a href="#" class="social-item instagram">
+    <i class="fab fa-instagram"></i>
+    Instagram
+    <span class="username">@iammikasa</span>
+  </a>
+</div>
+
+
+    </div>
+
+    <!-- ✅ Scrollable Main Area -->
+    <div class="main-content">
+       <!-- Card 1: Skills -->
+      <div class="info-card">
+        <h3>Skills</h3>
+        <div class="tags">
+          <span class="tag">React</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Git</span>
+        </div>
+      </div>
+
+      <!-- Card 2: Interests -->
+      <div class="info-card">
+        <h3>Interests</h3>
+        <div class="tags">
+          <span class="tag blue">Web Development</span>
+          <span class="tag blue">Data Science</span>
+          <span class="tag blue">Machine Learning</span>
+        </div>
+      </div>
+
+      <!-- Card 3: Projects -->
+      <div class="info-card project-card">
+        <h3>Projects</h3>
+        <div class="project-item">
+          
+          <div class="project-details">
+            <h4>Online Classes</h4>
+            <p>A web application for students to attend and manage online classes easily.</p>
+          </div>
+        </div>
+        <div class="project-item">
+          
+          <div class="project-details">
+            <h4>Attendance App</h4>
+            <p>Tracks student attendance and generates detailed monthly reports.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+      <div class="chart-row">
+        <!-- Card 4 -->
+        <div class="card large-card">
+          <h3>Time Spent per Day</h3>
+          <canvas id="timeChart"></canvas>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card large-card">
+          <h3>Internship Progress</h3>
+          <canvas id="progressChart"></canvas>
+        </div>
+</div>
+        <!-- Card 3 -->
+        <div class="card performance-card">
+          <div class="header">
+            <h2>Performance</h2>
+            <span>Last 6 Months ▾</span>
+          </div>
+
+          <div class="chart-section">
+            <div class="chart-container">
+              <canvas id="semiDoughnut"></canvas>
+              <div class="score-text">
+                80% <small>Total Score</small>
+              </div>
+            </div>
+
+            <div class="legend">
+              <div class="legend-item"><div class="color-box" style="background:#ba68c8;"></div> Participation — 55%</div>
+              <div class="legend-item"><div class="color-box" style="background:#ffeb3b;"></div> coding — 15%</div>
+              <div class="legend-item"><div class="color-box" style="background:#90caf9;"></div> time — 10%</div>
+            </div>
+          </div>
+
+          <div class="line-chart-container">
+            <canvas id="lineChart"></canvas>
+          </div>
+
+          <div class="footer">
+            Success is the sum of small efforts, repeated day in and day out.<br>
+            Keep pushing forward!
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <!-- ✅ Chart JS scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Pie Chart 1
+    const ctx1 = document.getElementById('timeChart').getContext('2d');
+    new Chart(ctx1, {
+      type: 'pie',
+      data: {
+        labels: ['Learning', 'Coding', 'Meetings', 'Breaks'],
+        datasets: [{
+          data: [4, 3, 2, 1],
+          backgroundColor: ['#7e57c2', '#ba68c8', '#ce93d8', '#f3e5f5'],
+          borderWidth: 1,
+          borderColor: '#fff'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom', align: 'center', labels: { usePointStyle: true } }
+        }
+      }
+    });
+
+    // Pie Chart 2
+    const ctx2 = document.getElementById('progressChart').getContext('2d');
+    new Chart(ctx2, {
+      type: 'doughnut',
+      data: {
+        labels: ['Completed', 'In Progress', 'Remaining'],
+        datasets: [{
+          data: [50, 20, 30],
+          backgroundColor: ['#7e57c2', '#655ef0', '#d1c4e9'],
+          borderWidth: 1,
+          borderColor: '#fff'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom', align: 'center', labels: { usePointStyle: true } }
+        },
+        cutout: '70%'
+      }
+    });
+
+    // Semi Doughnut
+    const ctxD = document.getElementById('semiDoughnut').getContext('2d');
+    new Chart(ctxD, {
+      type: 'doughnut',
+      data: {
+        labels: ['Participation', 'Quiz', 'Exam', 'Remaining'],
+        datasets: [{
+          data: [55, 15, 10, 20],
+          backgroundColor: ['#ba68c8', '#ffeb3b', '#90caf9', '#e0e0e0'],
+          borderWidth: 0,
+          circumference: 180,
+          rotation: 270
+        }]
+      },
+      options: { cutout: '70%', plugins: { legend: { display: false }, tooltip: { enabled: false } } }
+    });
+
+    // Line Chart
+    const ctxL = document.getElementById('lineChart').getContext('2d');
+    new Chart(ctxL, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          data: [50, 70, 85, 60, 75, 80],
+          borderColor: '#f48fb1',
+          backgroundColor: 'rgba(244,143,177,0.2)',
+          fill: true,
+          tension: 0.4,
+          pointRadius: 4,
+          pointBackgroundColor: '#f48fb1'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false, /* Important for resizing */
+        plugins: { legend: { display: false } },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { stepSize: 25, color: '#777' },
+            grid: { color: '#eee' }
+          },
+          x: {
+            ticks: { color: '#777' },
+            grid: { display: false }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

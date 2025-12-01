@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentor Feedback Dashboard</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(135deg, #fdfbfb, #ebedee, #f5f7fa);
+    }
+
+    .container {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #4c3ac1;
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    /* Mentor Profile Card */
+    .mentor-profile {
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #7b5cff, #4c3ac1);
+      color: white;
+      padding: 20px;
+      border-radius: 25px;
+      box-shadow: 0 8px 25px rgba(76, 58, 193, 0.25);
+      margin-bottom: 30px;
+    }
+
+    .mentor-profile img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid white;
+      margin-right: 20px;
+    }
+
+    .mentor-info h2 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .mentor-info p {
+      margin: 4px 0 0;
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    /* Feedback Box */
+    .mentor-feedback-box {
+      background: linear-gradient(135deg, #ffffff, #e0f7fa, #f5f7fa);
+      padding: 25px;
+      border-radius: 25px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Individual Feedback Card */
+    .feedback-card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+    .feedback-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .mentor-box {
+      background: #e0f7fa;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .pros-cons h3 {
+      margin: 0 0 5px 0;
+      color: #333;
+    }
+    .pros-cons p {
+      margin: 5px 0;
+      color: #555;
+    }
+
+    .rating-section {
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .rating-section button {
+      padding: 6px 12px;
+      background-color: #7b5cff;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .rating-section button:hover {
+      background-color: #9f89ff;
+    }
+    #ratingValue {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .reply-doubt {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .reply-doubt input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    .send-btn {
+      padding: 10px 14px;
+      border: none;
+      border-radius: 6px;
+      background-color: #4c3ac1;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .send-btn:hover {
+      background-color: #3727a8;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: auto;
+      padding: 20px;
+      border-radius: 12px;
+      width: 300px;
+      text-align: center;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover { color: #000; }
+
+    .stars .star {
+      font-size: 25px;
+      margin-right: 3px;
+    }
+
+    .feedback-date {
+      font-size: 14px;
+      color: #888;
+      text-align: right;
+      margin-top: 8px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Mentor Profile -->
+    <div class="mentor-profile">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Mentor Image">
+      <div class="mentor-info">
+        <h2>Dr. John Smith</h2>
+        <p>Senior Software Engineer | PixelWave</p>
+      </div>
+    </div>
+
+    <h1>Mentor Feedback</h1>
+
+    <!-- Feedback Box -->
+    <div class="mentor-feedback-box">
+
+      <!-- Feedback 1 -->
+      <div class="feedback-card">
+        <div class="mentor-box">
+          <strong>Mentor:</strong> Dr. Smith
+        </div>
+        <div class="pros-cons">
+          <h3>Feedback:</h3>
+          <p><strong>Pros:</strong> Excellent work on coding module.</p>
+          <p><strong>Cons:</strong> Improve documentation and comments.</p>
+        </div>
+        <div class="rating-section">
+          <h3>Rating:</h3>
+          <button id="showRating">View Star Rating</button>
+          <span id="ratingValue">4/5</span>
+        </div>
+        <div class="reply-doubt">
+          <input type="text" placeholder="Reply to mentor..." id="replyBox">
+          <button class="send-btn" onclick="sendReply('replyBox')">Send Reply</button>
+        </div>
+        <div class="reply-doubt">
+          <input type="text" placeholder="Ask a doubt..." id="doubtBox">
+          <button class="send-btn" onclick="sendReply('doubtBox')">Send Doubt</button>
+        </div>
+        <div class="feedback-date">September 30, 2025</div>
+      </div>
+
+      <!-- Feedback 2 -->
+      <div class="feedback-card">
+        <div class="mentor-box">
+          <strong>Mentor:</strong> Dr. Armin Arlet <span style="font-weight: normal;">| Faculty Mentor</span>
+        </div>
+        <div class="pros-cons">
+          <p><strong>Rating:</strong> 4.5/5</p>
+          <p>Excellent progress on the web development project. Shows strong problem-solving skills and dedication.</p>
+        </div>
+        <div class="feedback-date">September 28, 2025</div>
+      </div>
+
+      <!-- Feedback 3 -->
+      <div class="feedback-card">
+        <div class="mentor-box">
+          <strong>Mentor:</strong> Eren Jaeger <span style="font-weight: normal;">| Industry Supervisor</span>
+        </div>
+        <div class="pros-cons">
+          <p><strong>Rating:</strong> 5/5</p>
+          <p>Outstanding work ethic and technical skills. Completed all assigned tasks ahead of schedule.</p>
+        </div>
+        <div class="feedback-date">September 20, 2025</div>
+      </div>
+
+      <!-- Feedback 4 -->
+      <div class="feedback-card">
+        <div class="mentor-box">
+          <strong>Mentor:</strong> Dr. Historia Reiss <span style="font-weight: normal;">| Faculty Coordinator</span>
+        </div>
+        <div class="pros-cons">
+          <p><strong>Rating:</strong> 4/5</p>
+          <p>Good communication skills. Needs improvement in documentation practices.</p>
+        </div>
+        <div class="feedback-date">September 15, 2025</div>
+      </div>
+
+    </div>
+
+    <!-- Rating Modal -->
+    <div id="ratingModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Mentor Rating</h2>
+        <div class="stars" data-rating="4">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const modal = document.getElementById("ratingModal");
+    const btn = document.getElementById("showRating");
+    const span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function() { modal.style.display = "block"; }
+    span.onclick = function() { modal.style.display = "none"; }
+    window.onclick = function(event) { if(event.target == modal){ modal.style.display = "none"; } }
+
+    document.querySelectorAll('.stars').forEach(starDiv => {
+      const rating = parseInt(starDiv.dataset.rating);
+      const stars = starDiv.querySelectorAll('.star');
+      stars.forEach((star, index) => {
+        star.style.color = index < rating ? '#FFD700' : '#ccc';
+      });
+    });
+
+    function sendReply(boxId){
+      const input = document.getElementById(boxId);
+      if(input.value.trim() !== ''){
+        alert(`Sent: ${input.value}`);
+        input.value = '';
+      } else {
+        alert('Please enter a message.');
+      }
+    }
+  </script>
+</body>
+</html>

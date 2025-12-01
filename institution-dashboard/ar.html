@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analytics & Reports | VIT University</title>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Icons -->
+<link href="https://unpkg.com/lucide-static@latest/font/lucide.css" rel="stylesheet">
+<link rel="stylesheet" href="ar.css"/>
+
+
+</head>
+<body>
+
+<h1>Analytics & Reports</h1>
+<p>Track institution performance and generate reports</p>
+
+<!-- Internship Statistics -->
+<h2 style="color:#4b0082;"><i class="lucide lucide-bar-chart"></i> Internship Statistics</h2>
+<div class="stats-container">
+  <div class="stat-card">
+    <i class="lucide lucide-briefcase stat-icon"></i>
+    <div class="stat-value">342</div>
+    <div class="stat-label">Total Internships</div>
+  </div>
+  <div class="stat-card">
+    <i class="lucide lucide-check-circle stat-icon"></i>
+    <div class="stat-value">256</div>
+    <div class="stat-label">Completed</div>
+  </div>
+  <div class="stat-card">
+    <i class="lucide lucide-clock stat-icon"></i>
+    <div class="stat-value">86</div>
+    <div class="stat-label">Ongoing</div>
+  </div>
+  <div class="stat-card">
+    <i class="lucide lucide-trending-up stat-icon"></i>
+    <div class="stat-value">94%</div>
+    <div class="stat-label">Success Rate</div>
+  </div>
+</div>
+
+<!-- Department-wise Placement -->
+<div class="dept-section">
+  <div class="dept-header">
+    <h2><i class="lucide lucide-building-2"></i> Department-wise Placement</h2>
+  </div>
+
+  <div class="dept-list">
+
+    <div class="dept-card">
+      <div class="dept-info">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" class="company-logo">
+        <div class="dept-text">
+          <h4>Computer Science</h4>
+          <p><strong>Company:</strong> Microsoft</p>
+          <p><strong>Place:</strong> Hyderabad</p>
+          <p><strong>Type:</strong> National</p>
+        </div>
+      </div>
+      <div class="dept-data">
+        <h3>95%</h3>
+        <small>450 students</small>
+      </div>
+    </div>
+
+    <div class="dept-card">
+      <div class="dept-info">
+        <img src="Infosys_Logo.jpg" class="company-logo">
+        <div class="dept-text">
+          <h4>Information Technology</h4>
+          <p><strong>Company:</strong> Infosys</p>
+          <p><strong>Place:</strong> Bangalore</p>
+          <p><strong>Type:</strong> National</p>
+        </div>
+      </div>
+      <div class="dept-data">
+        <h3>92%</h3>
+        <small>380 students</small>
+      </div>
+    </div>
+
+    <div class="dept-card">
+      <div class="dept-info">
+        <img src="sam.png" class="company-logo">
+        <div class="dept-text">
+          <h4>Electronics</h4>
+          <p><strong>Company:</strong> Samsung</p>
+          <p><strong>Place:</strong> Seoul</p>
+          <p><strong>Type:</strong> International</p>
+        </div>
+      </div>
+      <div class="dept-data">
+        <h3>88%</h3>
+        <small>320 students</small>
+      </div>
+    </div>
+
+    <div class="dept-card">
+      <div class="dept-info">
+        <img src="tata.png" class="company-logo">
+        <div class="dept-text">
+          <h4>Mechanical</h4>
+          <p><strong>Company:</strong> Tata Motors</p>
+          <p><strong>Place:</strong> Pune</p>
+          <p><strong>Type:</strong> National</p>
+        </div>
+      </div>
+      <div class="dept-data">
+        <h3>85%</h3>
+        <small>290 students</small>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Visualization Graph -->
+<div class="chart-section">
+  <h2><i class="lucide lucide-activity"></i> Placement Success Comparison</h2>
+  <canvas id="placementChart"></canvas>
+</div>
+
+<script>
+  const ctx = document.getElementById('placementChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['CSE', 'IT', 'ECE', 'MECH'],
+      datasets: [{
+        label: 'Placement %',
+        data: [95, 92, 88, 85],
+        backgroundColor: [
+          'rgba(106, 13, 173, 0.85)',
+          'rgba(128, 0, 255, 0.85)',
+          'rgba(147, 112, 219, 0.85)',
+          'rgba(186, 85, 211, 0.85)'
+        ],
+        borderRadius: 10
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { enabled: true },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: '#4b0082',
+            stepSize: 10,
+            callback: (value) => value + '%'
+          },
+          grid: { color: '#e6d6ff' }
+        },
+        x: {
+          ticks: { color: '#4b0082' },
+          grid: { display: false }
+        }
+      },
+      animation: {
+        duration: 1200,
+        easing: 'easeOutBounce'
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

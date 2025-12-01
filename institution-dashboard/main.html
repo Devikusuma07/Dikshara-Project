@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIKSHARA | Institution Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="main.css"/>
+
+
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="logo-section">
+     
+      <h2>DIKSHARA</h2>
+
+       <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e6/Vellore_Institute_of_Technology_seal_2017.svg/1200px-Vellore_Institute_of_Technology_seal_2017.svg.png" alt="VIT Logo">
+       <h2>VIT University</h2>
+       <p>Institution portal</p>
+      <button class="toggle-btn" id="toggleBtn"><i class="ri-menu-line"></i></button>
+    </div>
+
+    <ul class="nav-links">
+      <li class="active" onclick="activate(this, 'Institution Overview')">
+        <i class="ri-building-4-line"></i><span>Institution Overview</span>
+      </li>
+      <li onclick="activate(this, 'Industry Partnerships')">
+        <i class="ri-hand-coin-line"></i><span>Industry Partnerships</span>
+      </li>
+      <li onclick="activate(this, 'Faculty Management')">
+        <i class="ri-team-line"></i><span>Faculty Management</span>
+      </li>
+      <li onclick="activate(this, 'Student Management')">
+        <i class="ri-user-3-line"></i><span>Student Management</span>
+      </li>
+      <li onclick="activate(this, 'Analytics & Reports')">
+        <i class="ri-bar-chart-2-line"></i><span>Analytics & Reports</span>
+      </li>
+      <li onclick="activate(this, 'Verification Status')">
+        <i class="ri-shield-check-line"></i><span>Verification Status</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content" id="mainContent">
+    <h1>Institution Overview</h1>
+    <p>Welcome to the DIKSHARA - VIT University Institution Portal. Explore insights, analytics, and institutional data with an elegant, interactive experience.</p>
+  </div>
+
+  <script>
+    // Sidebar Toggle
+    const sidebar = document.getElementById("sidebar");
+    const toggleBtn = document.getElementById("toggleBtn");
+    toggleBtn.onclick = () => sidebar.classList.toggle("collapsed");
+
+    // Section Activation & Animation
+    function activate(element, title) {
+      document.querySelectorAll(".nav-links li").forEach(li => li.classList.remove("active"));
+      element.classList.add("active");
+      const main = document.getElementById("mainContent");
+      main.innerHTML = `<h1>${title}</h1><p>Details and data for <strong>${title}</strong> will appear here.</p>`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Internship Matchmaking</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="am.css"/>
+
+  
+</head>
+
+<body>
+  <div class="dashboard">
+    <div class="heading-card">
+      <h2>AI Internship Matchmaking — Top Technical Matches</h2>
+
+      <!-- Sparkles inside the heading card -->
+      <div class="sparkle" style="top:20px; left:40px; animation-delay: 0.2s;"></div>
+      <div class="sparkle" style="top:50px; right:60px; animation-delay: 0.8s;"></div>
+      <div class="sparkle" style="bottom:30px; left:70px; animation-delay: 1.4s;"></div>
+      <div class="sparkle" style="bottom:20px; right:80px; animation-delay: 2s;"></div>
+    </div>
+
+    <!-- Internship 1 -->
+    <div class="internship-card" style="--percent: 92%;">
+      <div class="match-circle">92</div>
+      <div class="company">Google</div>
+      <h3>Software Engineering Intern</h3>
+      <p>◆ Mode: Hybrid (Bangalore) ◆ Stipend: ₹75,000/month ◆ Duration: 3 Months</p>
+      <p>◆ Posted: 2 weeks ago ◆ Status: Actively Hiring  ◆ Place: Bangalore</p>
+      <p>Contribute to backend services and scalable distributed systems. Collaborate with global teams to improve Google’s search infrastructure.</p>
+
+      <div class="skills">
+        <div class="skill">Python</div>
+        <div class="skill">C++</div>
+        <div class="skill">Data Structures</div>
+        <div class="skill">Algorithms</div>
+        <div class="skill">Linux</div>
+      </div>
+
+      <div class="buttons">
+        <button class="apply">Apply Now</button>
+        <button class="save">Save Internship</button>
+        <button class="learn">Learn Required Skills</button>
+      </div>
+    </div>
+
+    <!-- Internship 2 -->
+    <div class="internship-card" style="--percent: 89%;">
+      <div class="match-circle">89</div>
+      <div class="company">Amazon</div>
+      <h3>Data Analyst Intern</h3>
+      <p>◆ Mode: Work From Home ◆ Stipend: ₹45,000/month ◆ Duration: 4 Months</p>
+      <p>◆ Posted: 5 days ago ◆ Status: Actively Hiring  ◆ Place: Hyderabad</p>
+      <p>Assist in creating analytical dashboards, SQL reports, and automating weekly insights for retail and operations teams at Amazon.</p>
+
+      <div class="skills">
+        <div class="skill">SQL</div>
+        <div class="skill">Excel</div>
+        <div class="skill">Python</div>
+        <div class="skill">Data Visualization</div>
+        <div class="skill">Power BI</div>
+      </div>
+
+      <div class="buttons">
+        <button class="apply">Apply Now</button>
+        <button class="save">Save Internship</button>
+        <button class="learn">Learn Required Skills</button>
+      </div>
+    </div>
+
+    <!-- Internship 3 -->
+    <div class="internship-card" style="--percent: 85%;">
+      <div class="match-circle">85</div>
+      <div class="company">DeepMind</div>
+      <h3>AI Research Intern</h3>
+      <p>◆ Mode: Remote ◆ Stipend: ₹60,000/month ◆ Duration: 6 Months</p>
+      <p>◆ Posted: 1 week ago ◆ Status: Actively Hiring ◆ Place:Mumbai</p>
+      <p>Work on state-of-the-art reinforcement learning and neural network experiments. Collaborate with research scientists on AI model evaluation.</p>
+
+      <div class="skills">
+        <div class="skill">TensorFlow</div>
+        <div class="skill">PyTorch</div>
+        <div class="skill">Deep Learning</div>
+        <div class="skill">NLP</div>
+        <div class="skill">Mathematics</div>
+      </div>
+
+      <div class="buttons">
+        <button class="apply">Apply Now</button>
+        <button class="save">Save Internship</button>
+        <button class="learn">Learn Required Skills</button>
+      </div>
+    </div>
+
+    <!-- Interactive Map -->
+     <h2> Map</h2>
+    <div id="map"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const cities = [
+      { name: 'Bangalore', students: 10, status: 'Active', lat: 12.9716, lng: 77.5946 },
+      { name: 'Mumbai', students: 8, status: 'Active', lat: 19.0760, lng: 72.8777 },
+      { name: 'Hyderabad', students: 12, status: 'Active', lat: 17.3850, lng: 78.4867 }
+    ];
+
+    const map = L.map('map').setView([17.5, 78.5], 5);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    function getPinColor(status) {
+      return status === 'Active' ? 'green' : 'red';
+    }
+
+    cities.forEach(c => {
+      const marker = L.circleMarker([c.lat, c.lng], {
+        radius: 10,
+        color: getPinColor(c.status),
+        fillColor: getPinColor(c.status),
+        fillOpacity: 0.7
+      }).addTo(map);
+
+      marker.bindPopup(`<b>${c.name}</b><br>Interns: ${c.students}<br>Status: ${c.status}`);
+    });
+  </script>
+</body>
+</html>

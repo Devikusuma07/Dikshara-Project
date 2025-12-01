@@ -1,0 +1,130 @@
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f6ff;
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    .logbook-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #4c3ac1;
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .active-card, .past-card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px 35px;
+      box-shadow: 0 8px 30px rgba(76, 58, 193, 0.1);
+      margin-bottom: 30px;
+      transition: 0.3s;
+    }
+
+    .active-card:hover, .past-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(76, 58, 193, 0.18);
+    }
+
+    .active-card h2, .past-card h2 {
+      color: #4c3ac1;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .internship-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 6px;
+    }
+
+    .internship-details {
+      color: #555;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    /* === Single-line Progress Bar === */
+    .progress-bar-container {
+      width: 100%;
+      background: #ece9ff;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 20px;
+      margin-bottom: 20px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 66.7%; /* Week 8 of 12 = 66.7% */
+      background: linear-gradient(90deg, #7b5cff, #4c3ac1);
+      border-radius: 12px;
+      transition: width 0.5s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 8px;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    /* === Buttons === */
+    .active-buttons, .past-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .btn {
+      padding: 12px 22px;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 16px;
+    }
+
+    .update-btn { background: #7b5cff; color: white; }
+    .update-btn:hover { background: #9f89ff; }
+
+    .report-btn { background: #4c3ac1; color: white; }
+    .report-btn:hover { background: #3727a8; }
+
+    .download-btn { background: #ece9ff; color: #4c3ac1; }
+    .download-btn:hover { background: #d3caff; }
+
+    /* === Past Reports List === */
+    .past-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .past-card li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 15px;
+      color: #333;
+    }
+
+    .past-card li:last-child { border-bottom: none; }
+
+    .past-card li::before {
+      content: "📄";
+      margin-right: 4px;
+      font-size: 30px;
+    }
+

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIKSHARA - Mentor Dashboard (Merged)</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+  <div class="sidebar">
+    <h1>DIKSHARA</h1>
+    <div class="divider"></div>
+
+    <div class="mentor-section">
+      <img src="mentor.avif" alt="Dr. Levi Ackerman">
+      <h3>Dr. Levi Ackerman</h3>
+    </div>
+
+    <ul class="menu">
+      <li><a href="#" data-section="student"><i class="fa-solid fa-user-graduate"></i> Student Monitoring</a></li>
+      <li><a href="#" data-section="feedback"><i class="fa-solid fa-comments"></i> Mentor Feedback</a></li>
+      <li><a href="#" data-section="report"><i class="fa-solid fa-file-lines"></i> Report Generation</a></li>
+      <li><a href="#" data-section="analytics"><i class="fa-solid fa-chart-line"></i> Skill Gap Analytics</a></li>
+      <li><a href="#" data-section="institution"><i class="fa-solid fa-school"></i> Institution Dashboard</a></li>
+      <li><a href="#" data-section="credit"><i class="fa-solid fa-wallet"></i> Credit Management</a></li>
+      <li><a href="#" data-section="faculty"><i class="fa-solid fa-chalkboard-teacher"></i> Faculty Portal</a></li>
+      <li><a href="logout.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div id="content" style="background:white; padding:20px; min-height:80vh;">
+      <h2>Welcome to Mentor Dashboard</h2>
+      <p>Select an option from the sidebar to view details.</p>
+    </div>
+      <footer>© 2025 Dikshara. All Rights Reserved.</footer>
+  </div>
+   
+
+  <script>
+    const sectionMap = {
+      student: { html: 'sm.html', css: 'sm.css' },
+      feedback: { html: 'mf.html', css: 'mf.css' },
+      report: { html: 'rg.html', css: 'rg.css' },
+      analytics: { html: 'sg.html', css: 'sg.css' },
+      institution: { html: 'id.html', css: 'id.css' },
+      credit: { html: 'cm.html', css: 'cm.css' },
+      faculty: { html: 'fp.html', css: 'fp.css' }
+    };
+
+    const contentDiv = document.getElementById('content');
+    let activeCSS = null;
+    let loadingScriptPromises = [];
+
+    async function loadSection(sectionKey) {
+      const map = sectionMap[sectionKey];
+      if (!map) return;
+      try {
+        const res = await fetch(map.html);
+        const htmlText = await res.text();
+
+        // Parse fetched HTML
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlText, 'text/html');
+
+        // Extract body content
+        const bodyContent = doc.body ? doc.body.innerHTML : htmlText;
+
+        // Inject body content
+        contentDiv.innerHTML = bodyContent;
+
+        // Handle CSS: remove previous, add the required css (from mapping) first
+        if (activeCSS) activeCSS.remove();
+        activeCSS = document.createElement('link');
+        activeCSS.rel = 'stylesheet';
+        activeCSS.href = map.css;
+        document.head.appendChild(activeCSS);
+
+        // Load any additional stylesheet links found in the fetched doc (but avoid duplicates)
+        const linkEls = doc.querySelectorAll('link[rel="stylesheet"]');
+        linkEls.forEach(link => {
+          const href = link.getAttribute('href');
+          if (!href) return;
+          // skip if it's the same as the map.css or main.css or already present
+          if (href === map.css || href.endsWith('main.css')) return;
+          if (![...document.querySelectorAll('link[rel="stylesheet"]')].some(l => l.href.includes(href))) {
+            const l = document.createElement('link');
+            l.rel = 'stylesheet';
+            l.href = href;
+            document.head.appendChild(l);
+          }
+        });
+
+        // Execute scripts in order: external first (preserve order), then inline
+        const scripts = doc.querySelectorAll('script');
+        // Create promise chain to load external scripts sequentially
+        for (let s of scripts) {
+          if (s.src) {
+            await new Promise((resolve, reject) => {
+              // skip if already loaded
+              if ([...document.scripts].some(ds => ds.src && ds.src.includes(s.src))) {
+                resolve();
+                return;
+              }
+              const sc = document.createElement('script');
+              sc.src = s.src;
+              sc.onload = () => resolve();
+              sc.onerror = () => { console.error('Failed to load', s.src); resolve(); };
+              document.body.appendChild(sc);
+            });
+          } else {
+            // inline script: execute after a small delay to ensure DOM elements exist
+            try {
+              const inline = document.createElement('script');
+              inline.text = s.textContent;
+              document.body.appendChild(inline);
+            } catch (err) {
+              console.error('Inline script error', err);
+            }
+          }
+        }
+
+      } catch (err) {
+        console.error(err);
+        contentDiv.innerHTML = '<p style="color:red;">Could not load section.</p>';
+      }
+    }
+
+    document.querySelectorAll('.menu a[data-section]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const section = e.currentTarget.dataset.section;
+        loadSection(section);
+      });
+    });
+
+    // Optionally load default section
+    // loadSection('student');
+  </script>
+
+</body>
+</html>

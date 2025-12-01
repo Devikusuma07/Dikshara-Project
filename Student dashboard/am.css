@@ -1,0 +1,222 @@
+
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top left, #f6f5ff, #ececff);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 50px 20px;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .dashboard {
+      width: 100%;
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    /* === Heading Card with Glow and Sparkles === */
+    /* === Updated Heading Card Glow + Star Sparkles === */
+.heading-card {
+  position: relative;
+  background: #ffffff10;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 40px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(156,141,255,0.4),
+              inset 0 0 20px rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+/* Animated glowing border (rope-light effect) */
+.heading-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(90deg, #a899ff, #d0caff, #b7a8ff, #8c7dff);
+  background-size: 400% 400%;
+  animation: glowMove 8s ease infinite, pulseLight 3s ease-in-out infinite;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+@keyframes glowMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes pulseLight {
+  0%, 100% { opacity: 0.8; box-shadow: 0 0 15px rgba(160,140,255,0.6); }
+  50% { opacity: 1; box-shadow: 0 0 25px rgba(180,160,255,1); }
+}
+
+/* Star Sparkles ✨ */
+.sparkle {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle, #ffd901 0%, rgba(255, 230, 0, 0.333) 40%, transparent 70%);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 
+                     68% 57%, 79% 91%, 50% 70%, 
+                     21% 91%, 32% 57%, 2% 35%, 
+                     39% 35%);
+  opacity: 0.7;
+  transform: scale(0.8) rotate(0deg);
+  animation: starBlink 2.5s infinite ease-in-out alternate;
+}
+
+@keyframes starBlink {
+  0% {
+    transform: scale(0.6) rotate(0deg);
+    opacity: 0.4;
+    filter: drop-shadow(0 0 2px #fff);
+  }
+  25% {
+    transform: scale(0.6) rotate(0deg);
+    opacity: 0.4;
+    filter: drop-shadow(0 0 2px #fff);
+  }
+
+  50% {
+    transform: scale(1.2) rotate(15deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 5px #d9d0ff);
+  }
+  100% {
+    transform: scale(0.7) rotate(-10deg);
+    opacity: 0.3;
+    filter: drop-shadow(0 0 2px #ff8903);
+  }
+}
+
+
+    h2 {
+      color: #312b8c;
+      font-size: 26px;
+      font-weight: 600;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Internship Cards */
+    .internship-card {
+      background: white;
+      border-radius: 16px;
+      padding: 25px 30px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      position: relative;
+      transition: 0.3s;
+    }
+
+    .internship-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 22px rgba(0,0,0,0.12);
+    }
+
+    .company {
+      font-weight: 600;
+      color: #4c3ac1;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .internship-card h3 {
+      color: #2d2d2d;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .internship-card p {
+      color: #555;
+      font-size: 14px;
+      margin: 5px 0;
+      line-height: 1.5;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .skill {
+      background: #ece9ff;
+      color: #4c3ac1;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .buttons button {
+      flex: 1;
+      padding: 9px 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .apply { background: #4c3ac1; color: #fff; }
+    .save { background: #dfe1ff; color: #4c3ac1; }
+    .learn { background: #e6fff0; color: #0c8b3c; }
+
+    .apply:hover { background: #3a2fa3; }
+    .save:hover { background: #c8c9ff; }
+    .learn:hover { background: #c5ffdf; }
+
+    /* AI Match Circle */
+    .match-circle {
+      position: absolute;
+      top: 25px;
+      right: 30px;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: conic-gradient(#9c8dff var(--percent, 75%), #e2e2e2 0deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #333;
+      font-size: 15px;
+    }
+
+    .match-circle::after {
+      content: "%";
+      font-size: 11px;
+      position: relative;
+      top: -2px;
+      left: 2px;
+    }
+
+    /* Map Section */
+    #map {
+      height: 400px;
+      width: 100%;
+      border-radius: 16px;
+      margin-top: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      z-index: 1;
+    }

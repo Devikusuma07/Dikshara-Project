@@ -1,0 +1,133 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee, #f5f7fa); /* light mixed colors */
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+/* Total Mentor Feedback Box */
+.mentor-feedback-box {
+  background: linear-gradient(135deg, #fdfbfb, #e0f7fa, #f5f7fa); /* soft mixed colors */
+  padding: 20px;
+  border-radius: 25px; /* curved edges */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+/* Feedback Card */
+.feedback-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Mentor Box */
+.mentor-box {
+  background: #e0f7fa;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* Pros & Cons */
+.pros-cons h3 {
+  margin: 0 0 5px 0;
+  color: #333;
+}
+.pros-cons p {
+  margin: 5px 0;
+  color: #555;
+}
+
+/* Rating Section */
+.rating-section {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.rating-section button {
+  padding: 6px 12px;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.rating-section button:hover {
+  background-color: #45a049;
+}
+#ratingValue {
+  font-weight: bold;
+}
+
+/* Reply/Doubt Boxes */
+.reply-doubt {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.reply-doubt input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+.send-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #2196F3;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.send-btn:hover {
+  background-color: #0b7dda;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close:hover {
+  color: #000;
+}

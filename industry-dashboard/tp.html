@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intern Performance Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="tp.css">
+</head>
+<body>
+
+  <h1>Track Intern Performance</h1>
+  <p class="subtitle">Monitor progress and provide feedback to interns</p>
+
+  <div class="dashboard">
+    <!-- 2️⃣ Active Interns -->
+    <div class="interns-section">
+      <h2>Active Interns</h2>
+
+      <div class="intern-card">
+        <div class="intern-info">
+          <div class="intern-avatar">M</div>
+          <div>
+            <div class="intern-name">Mikasa Ackerman</div>
+            <div class="intern-role">Frontend Developer</div>
+            <div class="rating">⭐ 4.5</div>
+            <div class="progress-container">
+              <div class="progress-bar"><div class="progress-fill" style="width:85%;"></div></div>
+              <span class="progress-text">85%</span>
+            </div>
+          </div>
+        </div>
+        <button class="feedback-btn">Provide Feedback</button>
+      </div>   
+      
+      <div class="intern-card">
+        <div class="intern-info">
+          <div class="intern-avatar">A</div>
+          <div>
+            <div class="intern-name">Armin Arlet</div>
+            <div class="intern-role">Data Analyst</div>
+            <div class="rating">⭐ 4.8</div>
+            <div class="progress-container">
+              <div class="progress-bar"><div class="progress-fill" style="width:92%;"></div></div>
+              <span class="progress-text">92%</span>
+            </div>
+          </div>
+        </div>
+        <button class="feedback-btn">Provide Feedback</button>
+      </div>
+
+      <div class="intern-card">
+        <div class="intern-info">
+          <div class="intern-avatar">H</div>
+          <div>
+            <div class="intern-name">Historia Reiss</div>
+            <div class="intern-role">UI Designer</div>
+            <div class="rating">⭐ 4.3</div>
+            <div class="progress-container">
+              <div class="progress-bar"><div class="progress-fill" style="width:78%;"></div></div>
+              <span class="progress-text">78%</span>
+            </div>
+          </div>
+        </div>
+        <button class="feedback-btn">Provide Feedback</button>
+      </div>
+      <div class="intern-card">
+        <div class="intern-info">
+          <div class="intern-avatar">H</div>
+          <div>
+            <div class="intern-name">sarada</div>
+            <div class="intern-role"> Python developer</div>
+            <div class="rating">⭐ 4.3</div>
+            <div class="progress-container">
+              <div class="progress-bar"><div class="progress-fill" style="width:78%;"></div></div>
+              <span class="progress-text">98%</span>
+            </div>
+          </div>
+        </div>
+        <button class="feedback-btn">Provide Feedback</button>
+      </div>
+      <div class="intern-card">
+        <div class="intern-info">
+          <div class="intern-avatar">H</div>
+          <div>
+            <div class="intern-name">sasuke</div>
+            <div class="intern-role">Full stack Developer</div>
+            <div class="rating">⭐ 4.3</div>
+            <div class="progress-container">
+              <div class="progress-bar"><div class="progress-fill" style="width:78%;"></div></div>
+              <span class="progress-text">93%</span>
+            </div>
+          </div>
+        </div>
+        <button class="feedback-btn">Provide Feedback</button>
+      </div>
+    </div>
+
+
+  
+  
+
+  </div>
+  <script>
+    // Animate progress bars
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.progress-fill').forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(() => {
+          bar.style.width = width;
+        }, 300);
+      });
+    });
+
+    /*// Pipeline Chart
+    const pipelineCtx = document.getElementById('pipelineChart');
+    new Chart(pipelineCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Pending', 'Shortlisted', 'Selected', 'Rejected'],
+        datasets: [{
+          data: [89, 45, 18, 93],
+          backgroundColor: [
+            '#b388ff', '#9575cd', '#7e57c2', '#5e35b1'
+          ],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { color: '#555', font: { size: 13 } }
+          }
+        }
+      }
+    });
+
+    // Performance Chart
+    const performanceCtx = document.getElementById('performanceChart');
+    new Chart(performanceCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Mikasa', 'Armin', 'Historia'],
+        datasets: [{
+          label: 'Progress (%)',
+          data: [85, 92, 78],
+          backgroundColor: ['#9575cd', '#b388ff', '#7e57c2'],
+          borderRadius: 10
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            ticks: { color: '#555' }
+          },
+          x: { ticks: { color: '#555' } }
+        },
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });*/
+  </script>
+
+</body>
+</html>

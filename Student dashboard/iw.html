@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internship Wallet Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+<link rel="stylesheet" href="iw.css">
+
+</head>
+<body>
+
+<section class="internship-wallet">
+  <h2>Internship Wallet</h2>
+
+  <!-- Wallet Cards -->
+  <div class="wallet-cards">
+    <div class="wallet-card">
+      <div class="wallet-icon">📄</div>
+      <div class="wallet-title">Total Internships Applied</div>
+      <div class="wallet-number">12</div>
+    </div>
+    <div class="wallet-card">
+      <div class="wallet-icon">💰</div>
+      <div class="wallet-title">Credits Balance</div>
+      <div class="wallet-number">5</div>
+      <button class="wallet-btn">Add Credits</button>
+    </div>
+    <div class="wallet-card">
+      <div class="wallet-icon">⏳</div>
+      <div class="wallet-title">Ongoing Internships</div>
+      <div class="wallet-number">3</div>
+      <button class="wallet-btn">View Details</button>
+    </div>
+  </div>
+
+  <!-- Earnings Section -->
+  <div class="earnings-section">
+    <h3>Total Earnings</h3>
+    <div class="total-earnings">₹2,17,100</div>
+
+    <!-- Internship Cards -->
+    <div class="internship-list">
+      <div class="internship-item">
+        <div class="internship-name">Python Basics Internship</div>
+        <div class="internship-amount">₹44,400</div>
+      </div>
+      <div class="internship-item">
+        <div class="internship-name">Cloud Computing Internship</div>
+        <div class="internship-amount">₹53,268</div>
+      </div>
+      <div class="internship-item">
+        <div class="internship-name">Java Programming Internship</div>
+        <div class="internship-amount">₹48,829</div>
+      </div>
+      <div class="internship-item">
+        <div class="internship-name">Data Analysis Internship</div>
+        <div class="internship-amount">₹35,512</div>
+      </div>
+      <div class="internship-item">
+        <div class="internship-name">Excel Skills Internship</div>
+        <div class="internship-amount">₹35,512</div>
+      </div>
+    </div>
+
+    <!-- Violet Bar Chart -->
+    <div class="chart-container">
+      <canvas id="earningsChart"></canvas>
+    </div>
+  </div>
+</section>
+
+<script>
+const ctx = document.getElementById('earningsChart').getContext('2d');
+
+// Violet gradients for bars
+function createGradient(ctx, startColor, endColor){
+  const gradient = ctx.createLinearGradient(0,0,0,400);
+  gradient.addColorStop(0, startColor);
+  gradient.addColorStop(1, endColor);
+  return gradient;
+}
+
+const gradients = [
+  createGradient(ctx,'#8E24AA','#CE93D8'),
+  createGradient(ctx,'#7B1FA2','#BA68C8'),
+  createGradient(ctx,'#6A1B9A','#AB47BC'),
+  createGradient(ctx,'#9C27B0','#D1C4E9'),
+  createGradient(ctx,'#4A148C','#9C27B0')
+];
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Python Basics','Cloud Computing','Java Programming','Data Analysis','Excel Skills'],
+    datasets: [{
+      label: 'Earnings ($)',
+      data: [500,600,550,400,400],
+      backgroundColor: gradients,
+      borderRadius: 15,
+      barThickness: 60,
+      hoverBackgroundColor: ['#7B1FA2','#6A1B9A','#8E24AA','#9C27B0','#4A148C']
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(context){
+            return `$${context.raw} earned`;
+          }
+        }
+      },
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+        color: '#4A148C',
+        font: { weight: 'bold', size: 14 },
+        formatter: function(value){ return `$${value}`; }
+      }
+    },
+    scales: {
+      x: {
+        grid: { display: false },
+        ticks: { font: { size: 14, weight: 'bold' }, color: '#555' }
+      },
+      y: {
+        beginAtZero: true,
+        grid: { color: 'rgba(0,0,0,0.05)' },
+        ticks: { font: { size: 14 }, color: '#555' }
+      }
+    }
+  },
+  plugins: [ChartDataLabels]
+});
+</script> 
+
+</body>
+</html>

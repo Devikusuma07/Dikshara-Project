@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentor Dashboard with Arcs</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link rel="stylesheet" href="mf.css"/>
+
+</head>
+<body>
+
+<h1>Mentor Feedback Dashboard</h1>
+
+<!-- Pending Feedback Requests -->
+<div class="parent-card">
+  <h2>Pending Feedback Requests</h2>
+
+  <div class="sub-card">
+    <div class="student-info">
+      <div class="student-name"><i class="fas fa-user"></i> Armin Arlet</div>
+      <div class="student-course">Web Development - Week 8 evaluation due</div>
+    </div>
+    <button class="provide-btn"><i class="fas fa-comment-dots"></i> Provide Feedback</button>
+  </div>
+
+  <div class="sub-card">
+    <div class="student-info">
+      <div class="student-name"><i class="fas fa-user"></i> Historia Reiss</div>
+      <div class="student-course">Data Analytics - Week 8 evaluation due</div>
+    </div>
+    <button class="provide-btn"><i class="fas fa-comment-dots"></i> Provide Feedback</button>
+  </div>
+
+  <div class="sub-card">
+    <div class="student-info">
+      <div class="student-name"><i class="fas fa-user"></i> Jean Kirstein</div>
+      <div class="student-course">UI/UX Design - Week 8 evaluation due</div>
+    </div>
+    <button class="provide-btn"><i class="fas fa-comment-dots"></i> Provide Feedback</button>
+  </div>
+</div>
+
+<!-- Feedback Form -->
+<div class="feedback-form">
+  <h2>Provide Feedback</h2>
+  
+  <div class="form-group">
+    <label for="rating">Rating (1-5):</label>
+    <input type="text" id="rating" placeholder="Enter rating 1-5">
+  </div>
+
+  <div class="form-group">
+    <label for="comments">Comments / Suggestions:</label>
+    <textarea id="comments" rows="4" placeholder="Write your feedback..."></textarea>
+  </div>
+
+  <div class="form-group">
+    <label>Skills Assessment:</label>
+    <div class="skills-checkboxes">
+      <label><input type="checkbox"> Teamwork</label>
+      <label><input type="checkbox"> Coding</label>
+      <label><input type="checkbox"> Communication</label>
+      <label><input type="checkbox"> Punctuality</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="tags">Tags / Status:</label>
+    <select id="tags">
+      <option>On Track</option>
+      <option>Needs Improvement</option>
+      <option>Excellent</option>
+    </select>
+  </div>
+
+  <button class="submit-btn">Submit Feedback</button>
+</div>
+
+<!-- Historical Feedback -->
+<div class="parent-card historical-card-container">
+  <h2>Previous Feedback</h2>
+
+  <div class="historical-card">
+    <div><strong>Week 7</strong> - Rating: <span class="rating">4</span> <span class="badge badge-ontrack">On Track</span></div>
+    <div>Comments: Good participation in team tasks.</div>
+    <div class="progress-bar-container">
+      <div class="progress-bar" style="width: 80%;"></div>
+    </div>
+  </div>
+
+  <div class="historical-card">
+    <div><strong>Week 6</strong> - Rating: <span class="rating">3</span> <span class="badge badge-improvement">Needs Improvement</span></div>
+    <div>Comments: Needs to improve punctuality.</div>
+    <div class="progress-bar-container">
+      <div class="progress-bar" style="width: 60%;"></div>
+    </div>
+  </div>
+
+  <div class="historical-card">
+    <div><strong>Week 5</strong> - Rating: <span class="rating">5</span> <span class="badge badge-excellent">Excellent</span></div>
+    <div>Comments: Excellent coding skills and teamwork.</div>
+    <div class="progress-bar-container">
+      <div class="progress-bar" style="width: 100%;"></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+

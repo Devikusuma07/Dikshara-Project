@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Institution Dashboard | Deeksha</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="id.css"/>
+</head>
+<body>
+
+  <header>Dikshara Institution Dashboard</header>
+
+
+  <section class="stats">
+    <div class="card">
+      <i class="fa-solid fa-building icon"></i>
+      <div>
+        <h2>8</h2>
+        <p>Departments</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fa-solid fa-handshake icon"></i>
+      <div>
+        <h2>23</h2>
+        <p>Industry Partners</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fa-solid fa-certificate icon"></i>
+      <div>
+        <h2>156</h2>
+        <p>Certifications Issued</p>
+      </div>
+    </div>
+  </section>
+<!-- Font Awesome Icons -->
+<div class="filters">
+  <select id="departmentFilter">
+    <option value="all">All Departments</option>
+    <option value="CSE">CSE</option>
+    <option value="ECE">ECE</option>
+    <option value="AI">AI</option>
+    <option value="IT">IT</option>
+  </select>
+
+  <select id="typeFilter">
+    <option value="all">All Types</option>
+    <option value="Internship">Internship</option>
+    <option value="Workshop">Workshop</option>
+    <option value="Research">Research</option>
+  </select>
+</div>
+
+<div class="partners" id="partnersList">
+  <h3>Industry Partnerships</h3>
+</div>
+
+ <!-- Interactive Map -->
+  <div id="map"></div>
+
+
+    <div class="leaderboard">
+    <h3>Top Performing Companies</h3>
+    <div id="leaderboardList"></div>
+  </div>
+
+
+  
+  <footer>© 2025 Dikshara. All Rights Reserved.</footer>
+
+  <script>
+
+    const partnersData = [
+  { 
+    name: 'PixelWave Technologies',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',
+    students: 12,
+    status: 'Active',
+    dept: 'CSE',
+    type: 'Internship',
+    rating: 4,
+    package: '₹6 LPA',
+    placementType: 'National'
+  },
+  { 
+    name: 'DataForge Solutions',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Google_2015_logo.svg',
+    students: 8,
+    status: 'Active',
+    dept: 'ECE',
+    type: 'Workshop',
+    rating: 5,
+    package: '₹5.5 LPA',
+    placementType: 'International'
+  },
+  { 
+    name: 'NeuralNet Labs',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg',
+    students: 15,
+    status: 'Active',
+    dept: 'AI',
+    type: 'Research',
+    rating: 5,
+    package: '₹7 LPA',
+    placementType: 'National'
+  },
+  { 
+    name: 'CloudScale Systems',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Microsoft_logo_%282012%29.svg',
+    students: 6,
+    status: 'Active',
+    dept: 'IT',
+    type: 'Internship',
+    rating: 3,
+    package: '₹5 LPA',
+    placementType: 'International'
+  }
+];
+
+const partnersList = document.getElementById('partnersList');
+
+function displayPartners(filterDept = 'all', filterType = 'all') {
+  partnersList.innerHTML = '<h3>Industry Partnerships</h3>';
+
+  partnersData
+    .filter(p => (filterDept === 'all' || p.dept === filterDept) &&
+                 (filterType === 'all' || p.type === filterType))
+    .forEach(p => {
+      const div = document.createElement('div');
+      div.className = 'partner-card';
+      div.innerHTML = `
+        <div class="partner-info">
+          <div class="partner-logo">
+            <img src="${p.logo}" alt="${p.name}">
+          </div>
+          <div class="partner-details">
+            <p><strong>${p.name}</strong></p>
+            <p>${p.students} students placed</p>
+            <p><strong>Package:</strong> ${p.package}</p>
+            <p><strong>Placement Type:</strong> ${p.placementType}</p>
+            <p class="rating">${'★'.repeat(p.rating)}${'☆'.repeat(5 - p.rating)}</p>
+          </div>
+        </div>
+        <div class="status ${p.status.toLowerCase()}">${p.status}</div>
+      `;
+      partnersList.appendChild(div);
+    });
+}
+
+// Event listeners for filters
+document.getElementById('departmentFilter').addEventListener('change', e => {
+  displayPartners(e.target.value, document.getElementById('typeFilter').value);
+});
+
+document.getElementById('typeFilter').addEventListener('change', e => {
+  displayPartners(document.getElementById('departmentFilter').value, e.target.value);
+});
+
+// Initial display
+displayPartners();
+
+const partners = [
+  // India
+  { name: 'PixelWave Technologies', students: 12, status: 'Active', lat: 19.07, lng: 72.87 },
+  { name: 'CloudScale Systems', students: 6, status: 'Active', lat: 13.08, lng: 80.27 },
+
+  // United Kingdom
+  { name: 'London Tech Solutions', students: 10, status: 'Active', lat: 51.5074, lng: -0.1278 },
+
+  // America
+  { name: 'Silicon Valley Labs', students: 15, status: 'Inactive', lat: 37.3875, lng: -122.0575 }
+];
+
+
+
+  // Initialize Map
+  const map = L.map('map').setView([20.59, 78.96], 5);
+
+  // Add OpenStreetMap Tiles
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Function to get pin color based on status
+  function getPinColor(status) {
+    return status === 'Active' ? 'green' : 'red';
+  }
+
+  // Add Markers
+  partners.forEach(p => {
+    const marker = L.circleMarker([p.lat, p.lng], {
+      radius: 10,
+      color: getPinColor(p.status),
+      fillColor: getPinColor(p.status),
+      fillOpacity: 0.7
+    }).addTo(map);
+
+    // Add popup on click
+    marker.bindPopup(`
+      <b>${p.name}</b><br>
+      Students Placed: ${p.students}<br>
+      Status: ${p.status}
+    `);
+  });
+
+  // Leaderboard
+    const leaderboardList = document.getElementById('leaderboardList');
+    partnersData.sort((a,b) => b.students - a.students).forEach(p => {
+      const div = document.createElement('div');
+      div.className = 'leader-card';
+      div.innerHTML = `<span>${p.name}</span><span>${p.students} students</span>`;
+      leaderboardList.appendChild(div);
+    });
+
+  </script>
+</body>
+</html>

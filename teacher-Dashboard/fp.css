@@ -1,0 +1,113 @@
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e0f2fe, #eff6ff);
+      color: #1e293b;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 50px 20px;
+    }
+
+    /* ===== Faculty Card ===== */
+    .faculty-card {
+      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      border-radius: 25px;
+      width: 600px;
+      padding: 30px 25px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 8px 30px rgba(37, 99, 235, 0.4);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .faculty-card::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, rgba(250,204,21,0.4), rgba(37,99,235,0.4), rgba(251,191,24,0.4));
+      animation: rotateBG 6s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes rotateBG {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .faculty-card * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .faculty-card:hover {
+      transform: translateY(-12px) scale(1.05);
+      box-shadow: 0 12px 40px rgba(37, 99, 235, 0.6);
+    }
+
+    .faculty-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid #facc15;
+      object-fit: cover;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .faculty-card img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(250, 204, 21, 0.6);
+    }
+
+    .faculty-card h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .faculty-card h3 {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 15px;
+      color: #fef3c7;
+    }
+
+    .faculty-card p {
+      font-size: 14px;
+      margin: 5px 0;
+      color: #fff;
+    }
+
+    .faculty-card .info {
+      margin-top: 15px;
+      text-align: left;
+    }
+
+    .faculty-card .info i {
+      color: #facc15;
+      margin-right: 8px;
+    }
+
+    .faculty-card .social-links {
+      margin-top: 15px;
+    }
+
+    .faculty-card .social-links a {
+      color: #fff;
+      margin: 0 10px;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    .faculty-card .social-links a:hover {
+      color: #facc15;
+      transform: scale(1.2);
+    }
