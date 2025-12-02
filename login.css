@@ -1,0 +1,134 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #87CEEB, #f3bcfe);
+  overflow: hidden;
+}
+
+/* Background Motion (optional aesthetic) */
+.login-bg {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle at center, #ffffff22, #00000011);
+  animation: float 10s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+@keyframes float {
+  0% { transform: translateY(-20px); }
+  100% { transform: translateY(20px); }
+}
+
+/* Circular Transparent Login Box */
+.login-container {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  border-radius: 50%;
+  width: 600px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 40px;
+}
+
+/* Texts */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: rgb(57, 57, 57);
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #404040cc;
+  margin-bottom: 20px;
+}
+
+.subtitle span {
+  color: #d333bb;;
+  font-weight: 600;
+}
+
+/* Inputs */
+form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  text-align: left;
+  font-size: 0.9rem;
+  color: #404040cc;
+}
+
+input {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}
+
+/* Button */
+.login-btn {
+  background: #00b5a5;
+  color: white;
+  font-weight: 600;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s ease;
+}
+
+.login-btn:hover {
+  background: #009b8e;
+}
+
+/* Bottom Text */
+.signup-text {
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+.signup-text a {
+  color: #ffe27d;
+  text-decoration: none;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Circle */
+@media (max-width: 600px) {
+  .login-container {
+    width: 340px;
+    height: 340px;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+}

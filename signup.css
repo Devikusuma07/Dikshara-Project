@@ -1,0 +1,20 @@
+/* signup.css */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { height: 100vh; display: flex; justify-content: center; align-items: center; background: linear-gradient(135deg, #87CEEB, #f3bcfe); background-size: 300% 300%; animation: moveGradient 15s ease infinite; font-family: 'Poppins', sans-serif; color: #404040cc; overflow: hidden; }
+@keyframes moveGradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+.signup-container { background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(15px); border-radius: 20px; width: 80%; max-width: 900px; max-height: 90vh; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; box-shadow: 0 0 40px rgba(255, 255, 255, 0.25); padding: 40px; overflow-y: auto; }
+.signup-container h1 { font-size: 2rem; margin-bottom: 0.5rem; background: linear-gradient(to right, #87CEEB, #b19cd9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.subtitle { font-size: 1.1rem; margin-bottom: 1.5rem; color: #404040cc; }
+.role-buttons { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px; }
+.role-btn { background: #ffffff88; border: none; color: #333; font-weight: 600; padding: 8px 16px; border-radius: 8px; cursor: pointer; transition: background 0.3s ease, transform 0.2s; }
+.role-btn:hover, .role-btn.active { background: #ffffffcc; transform: scale(1.05); }
+form { display: flex; flex-direction: column; width: 100%; max-width: 850px; text-align: left; }
+label { font-weight: 500; margin: 8px 0 4px; }
+input { padding: 10px; border: none; border-radius: 8px; margin-bottom: 12px; outline: none; font-size: 1rem; background: rgba(255, 255, 255, 0.9); }
+input::placeholder { color: #777; }
+.signup-btn { background: #00b5a5; color: white; font-size: 1rem; padding: 12px; border: none; border-radius: 8px; margin-top: 10px; cursor: pointer; transition: background 0.3s ease; }
+.signup-btn:hover { background: #009b8e; }
+.info-note { font-size: 0.85rem; color: #555; margin: 8px 0; }
+.alt-text { margin-top: 20px; font-size: 0.9rem; text-align: center; }
+.alt-text a { color: #404040cc; font-weight: 600; text-decoration: underline; }
+@media (max-width: 768px) { .signup-container { width: 90%; height: auto; padding: 30px 20px; } }

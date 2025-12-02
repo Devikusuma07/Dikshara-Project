@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | Dikshara</title>
+  <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+  <div class="background"></div>
+
+  <div class="signup-container">
+    <h1>Dikshara Registration</h1>
+    <p class="subtitle">Register on Dikshara</p>
+
+    <!-- Role Buttons -->
+    <div class="role-buttons">
+      <button class="role-btn active" id="studentBtn">Student</button>
+      <button class="role-btn" id="facultyBtn">Faculty</button>
+      <button class="role-btn" id="industryBtn">Industry</button>
+      <button class="role-btn" id="institutionBtn">Institution</button>
+    </div>
+
+    <form id="signupForm">
+      <!-- Dynamic form fields will appear here -->
+    </form>
+
+    <p class="alt-text">
+      Already have an account? <a href="login.html">Sign In</a>
+    </p>
+  </div>
+
+  <script>
+    const form = document.getElementById('signupForm');
+const buttons = document.querySelectorAll('.role-btn');
+
+const forms = {
+  student: `
+    <h3>Register on DIKSHARA</h3>
+    <p>Join the future of skill-based learning and internships</p>
+    <label>Your Full Name</label>
+    <input type="text" placeholder="e.g., STU2025001" required>
+    <label>Email Address</label>
+    <input type="email" placeholder="yourname@university.edu" required>
+    <p class="info-note">Use your official institution email for auto-verification</p>
+    <label>Department</label>
+    <input type="text" placeholder="e.g., Computer Science" required>
+    <label>Year</label>
+    <input type="text" placeholder="e.g., 3rd Year" required>
+    <label>Phone Number</label>
+    <input type="text" placeholder="+91 1234567890" required>
+    <label>Password</label>
+    <input type="password" placeholder="Create a strong password" required>
+    <p class="info-note">💡 Your account will be auto-verified if you use your institution email. Otherwise, it requires faculty approval.</p>
+    <button class="signup-btn" type="submit">Submit Registration</button>
+    <p class="info-note">By registering, you agree to DIKSHARA's Terms of Service and Privacy Policy.</p>
+  `,
+
+  faculty: `
+    <label>Full Name *</label>
+    <input type="text" placeholder="Dr. John Smith" required>
+    <label>Institution Email *</label>
+    <input type="email" placeholder="professor@university.edu" required>
+    <p class="info-note">Must use official institution email domain</p>
+    <label>Designation *</label>
+    <input type="text" placeholder="e.g., Associate Professor" required>
+    <label>Phone Number *</label>
+    <input type="text" placeholder="+91 1234567890" required>
+    <label>Password *</label>
+    <input type="password" placeholder="Create a strong password" required>
+    <label>Faculty ID *</label>
+    <input type="text" placeholder="e.g., FAC2025001" required>
+    <label>Department *</label>
+    <input type="text" placeholder="e.g., Computer Science" required>
+    <p class="info-note">Your registration requires approval from your Institution Admin. You'll receive an email once verified.</p>
+    <button class="signup-btn" type="submit">Submit Registration</button>
+    <p class="info-note">By registering, you agree to DIKSHARA's Terms of Service and Privacy Policy.</p>
+  `,
+
+  industry: `
+    <label>Company Name *</label>
+    <input type="text" placeholder="e.g., TechCorp Solutions" required>
+    <label>Contact Person Name *</label>
+    <input type="text" placeholder="Your full name" required>
+    <label>Official Company Email *</label>
+    <input type="email" placeholder="contact@company.com" required>
+    <label>Company Website *</label>
+    <input type="url" placeholder="https://www.company.com" required>
+    <label>Industry Type *</label>
+    <input type="text" placeholder="e.g., IT Services" required>
+    <label>Phone Number *</label>
+    <input type="text" placeholder="+91 1234567890" required>
+    <label>Password *</label>
+    <input type="password" placeholder="Create a strong password" required>
+    <label>Designation *</label>
+    <input type="text" placeholder="e.g., HR Manager" required>
+    <label>GST Number *</label>
+    <input type="text" placeholder="22AAAAA0000A1Z5" required>
+    <label>LinkedIn Profile</label>
+    <input type="url" placeholder="linkedin.com/company/…">
+    <button class="signup-btn" type="submit">Submit Registration</button>
+  `,
+
+  institution: `
+    <label>University/Institution Name *</label>
+    <input type="text" placeholder="e.g., Indian Institute of Technology" required>
+    <label>Contact Person Name *</label>
+    <input type="text" placeholder="Dean/HOD Name" required>
+    <label>Official Email *</label>
+    <input type="email" placeholder="admin@university.edu" required>
+    <label>Official Website *</label>
+    <input type="url" placeholder="https://www.university.edu" required>
+    <label>Institution Address *</label>
+    <input type="text" placeholder="Full address with city, state, pincode" required>
+    <label>Phone Number *</label>
+    <input type="text" placeholder="+91 1234567890" required>
+    <label>Password *</label>
+    <input type="password" placeholder="Create a strong password" required>
+    <label>Designation *</label>
+    <input type="text" placeholder="e.g., Dean of Academics" required>
+    <label>Accreditation Number *</label>
+    <input type="text" placeholder="NAAC/NBA Number" required>
+    <button class="signup-btn" type="submit">Submit Registration</button>
+  `
+};
+
+// Default form
+form.innerHTML = forms.student;
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    if (btn.id === 'studentBtn') form.innerHTML = forms.student;
+    if (btn.id === 'facultyBtn') form.innerHTML = forms.faculty;
+    if (btn.id === 'industryBtn') form.innerHTML = forms.industry;
+    if (btn.id === 'institutionBtn') form.innerHTML = forms.institution;
+  });
+});
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  alert('Registration submitted successfully!');
+});
+
+  </script>
+</body>
+</html> 
